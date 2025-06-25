@@ -1,90 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>WIC Bolsas</title>
-    <link rel="stylesheet" href="estilos.css"/>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f7eae1;
-        }
-        header {
-            background: #f7eae1;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-        nav a {
-            margin: 0 15px;
-            color: black;
-            text-decoration: none;
-        }
-        .logo {
-            font-size: 1.5em;
-        }
-        .banner {
-            width: 100%;
-            max-height: 80vh;
-            overflow: hidden;
-            position: relative;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .banner img.active {
-            opacity: 1;
-            position: relative;
-        }
-        .slogan {
-            text-align: center;
-            font-size: 1.2em;
-            margin: 20px;
-            font-style: italic;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WIC Bolsas</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f7eae1;
+      font-family: Arial, sans-serif;
+      color: #000;
+    }
+    header {
+      background-color: #f7eae1;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #000;
+      text-decoration: none;
+    }
+    .banner {
+      width: 100%;
+      max-height: 500px;
+      overflow: hidden;
+    }
+    .banner img {
+      width: 100%;
+      display: block;
+    }
+    .frase {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">WIC</div>
-        <nav>
-            <a href="#">INÍCIO</a>
-            <a href="#">LOJA</a>
-            <a href="#">INSTAGRAM</a>
-            <a href="#">CONTATO</a>
-        </nav>
-    </header>
+  <header>
+    <div><strong>WIC</strong></div>
+    <nav>
+      <a href="#">INÍCIO</a>
+      <a href="#">LOJA</a>
+      <a href="#">INSTAGRAM</a>
+      <a href="#">CONTATO</a>
+    </nav>
+  </header>
 
-    <div class="banner">
-        <img src="foto1.jpg" class="active" alt="Banner 1">
-        <img src="foto2.jpg" alt="Banner 2">
-        <img src="foto3.jpg" alt="Banner 3">
-        <img src="foto4.jpg" alt="Banner 4">
-        <img src="foto5.jpg" alt="Banner 5">
-        <img src="foto6.jpg" alt="Banner 6">
-        <img src="foto7.jpg" alt="Banner 7">
-        <img src="foto8.jpg" alt="Banner 8">
-        <img src="foto9.jpg" alt="Banner 9">
-    </div>
+  <div class="banner">
+    <img src="foto1.jpg" alt="Banner 1" />
+  </div>
 
-    <div class="slogan">A moda passa, o estilo permanece!</div>
-
-    <script>
-        let current = 0;
-        const slides = document.querySelectorAll(".banner img");
-        setInterval(() => {
-            slides[current].classList.remove("active");
-            current = (current + 1) % slides.length;
-            slides[current].classList.add("active");
-        }, 3000);
-    </script>
+  <div class="frase">
+    A moda passa, o estilo permanece!
+  </div>
 </body>
 </html>
