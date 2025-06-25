@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WIC Bolsas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7eae1;
+    }
+    .slider {
+      position: relative;
+      overflow: hidden;
+      height: 80vh;
+    }
+    .slides {
+      display: flex;
+      width: 900%;
+      animation: slide 36s infinite;
+    }
+    .slides img {
+      width: 100vw;
+      height: 80vh;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% { margin-left: 0%; }
+      11.11% { margin-left: -100vw; }
+      22.22% { margin-left: -200vw; }
+      33.33% { margin-left: -300vw; }
+      44.44% { margin-left: -400vw; }
+      55.55% { margin-left: -500vw; }
+      66.66% { margin-left: -600vw; }
+      77.77% { margin-left: -700vw; }
+      88.88% { margin-left: -800vw; }
+      100% { margin-left: 0%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slides">
+      <img src="assets/images/foto1.jpg" alt="Banner 1"/><img src="assets/images/foto2.jpg" alt="Banner 2"/><img src="assets/images/foto3.jpg" alt="Banner 3"/><img src="assets/images/foto4.jpg" alt="Banner 4"/><img src="assets/images/foto5.jpg" alt="Banner 5"/><img src="assets/images/foto6.jpg" alt="Banner 6"/><img src="assets/images/foto7.jpg" alt="Banner 7"/><img src="assets/images/foto8.jpg" alt="Banner 8"/><img src="assets/images/foto9.jpg" alt="Banner 9"/>
+    </div>
+  </div>
+</body>
+</html>
