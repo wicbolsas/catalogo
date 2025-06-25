@@ -1,49 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WIC Bolsas</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f7eae1;
-    }
-    .slider {
-      position: relative;
-      overflow: hidden;
-      height: 80vh;
-    }
-    .slides {
-      display: flex;
-      width: 900%;
-      animation: slide 36s infinite;
-    }
-    .slides img {
-      width: 100vw;
-      height: 80vh;
-      object-fit: cover;
-    }
-    @keyframes slide {
-      0% { margin-left: 0%; }
-      11.11% { margin-left: -100vw; }
-      22.22% { margin-left: -200vw; }
-      33.33% { margin-left: -300vw; }
-      44.44% { margin-left: -400vw; }
-      55.55% { margin-left: -500vw; }
-      66.66% { margin-left: -600vw; }
-      77.77% { margin-left: -700vw; }
-      88.88% { margin-left: -800vw; }
-      100% { margin-left: 0%; }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WIC Bolsas</title>
+    <link rel="stylesheet" href="estilos.css"/>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7eae1;
+        }
+        header {
+            background: #f7eae1;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        nav a {
+            margin: 0 15px;
+            color: black;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 1.5em;
+        }
+        .banner {
+            width: 100%;
+            max-height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .banner img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .banner img.active {
+            opacity: 1;
+            position: relative;
+        }
+        .slogan {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-  <div class="slider">
-    <div class="slides">
-      <img src="assets/images/foto1.jpg" alt="Banner 1"/><img src="assets/images/foto2.jpg" alt="Banner 2"/><img src="assets/images/foto3.jpg" alt="Banner 3"/><img src="assets/images/foto4.jpg" alt="Banner 4"/><img src="assets/images/foto5.jpg" alt="Banner 5"/><img src="assets/images/foto6.jpg" alt="Banner 6"/><img src="assets/images/foto7.jpg" alt="Banner 7"/><img src="assets/images/foto8.jpg" alt="Banner 8"/><img src="assets/images/foto9.jpg" alt="Banner 9"/>
+    <header>
+        <div class="logo">WIC</div>
+        <nav>
+            <a href="#">INÍCIO</a>
+            <a href="#">LOJA</a>
+            <a href="#">INSTAGRAM</a>
+            <a href="#">CONTATO</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <img src="foto1.jpg" class="active" alt="Banner 1">
+        <img src="foto2.jpg" alt="Banner 2">
+        <img src="foto3.jpg" alt="Banner 3">
+        <img src="foto4.jpg" alt="Banner 4">
+        <img src="foto5.jpg" alt="Banner 5">
+        <img src="foto6.jpg" alt="Banner 6">
+        <img src="foto7.jpg" alt="Banner 7">
+        <img src="foto8.jpg" alt="Banner 8">
+        <img src="foto9.jpg" alt="Banner 9">
     </div>
-  </div>
+
+    <div class="slogan">A moda passa, o estilo permanece!</div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll(".banner img");
+        setInterval(() => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        }, 3000);
+    </script>
 </body>
 </html>
