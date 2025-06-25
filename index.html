@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
   <style>
     body {
@@ -11,6 +11,7 @@
       font-family: Arial, sans-serif;
       color: #000;
     }
+
     header {
       background-color: #f7eae1;
       padding: 20px;
@@ -18,21 +19,50 @@
       justify-content: space-between;
       align-items: center;
       font-weight: bold;
+      flex-wrap: wrap;
     }
+
     nav a {
       margin: 0 10px;
       color: #000;
       text-decoration: none;
     }
-    .banner {
+
+    .banner-container {
+      position: relative;
       width: 100%;
       max-height: 500px;
       overflow: hidden;
     }
-    .banner img {
+
+    .banner-container img {
       width: 100%;
+      height: auto;
       display: block;
+      transition: opacity 1s ease-in-out;
     }
+
+    .banner-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      font-size: 2em;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+
     .frase {
       text-align: center;
       margin: 40px 0;
@@ -52,12 +82,54 @@
     </nav>
   </header>
 
-  <div class="banner">
-    <img src="foto1.jpg" alt="Banner 1" />
+  <div class="banner-container" id="carousel">
+    <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
+    <img id="banner-img" src="foto1.jpg" alt="Banner WIC Bolsas">
+    <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
   </div>
 
   <div class="frase">
     A moda passa, o estilo permanece!
   </div>
+
+  <script>
+    const imagens = [
+      "foto1.jpg",
+      "foto2.jpg",
+      "foto3.jpg",
+      "foto4.jpg",
+      "foto5.jpg",
+      "foto6.jpg",
+      "foto7.jpg",
+      "foto8.jpg",
+      "foto9.jpg"
+    ];
+
+    let index = 0;
+    const banner = document.getElementById("banner-img");
+
+    function trocarImagem(direcao) {
+      index = (index + direcao + imagens.length) % imagens.length;
+      banner.style.opacity = 0;
+      setTimeout(() => {
+        banner.src = imagens[index];
+        banner.style.opacity = 1;
+      }, 300);
+    }
+
+    setInterval(() => trocarImagem(1), 3000);
+
+    // Toque no celular (swipe)
+    let touchStartX = 0;
+    document.getElementById("carousel").addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.getElementById("carousel").addEventListener("touchend", (e) => {
+      let touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX - touchStartX > 50) trocarImagem(-1);
+      if (touchEndX - touchStartX < -50) trocarImagem(1);
+    });
+  </script>
 </body>
 </html>
