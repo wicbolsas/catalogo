@@ -1,0 +1,53 @@
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7eae1;
+  color: #000;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.frase {
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  margin: 20px 0;
+}
