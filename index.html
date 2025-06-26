@@ -12,30 +12,27 @@
     }
 
     header {
-      position: relative;
       background-color: white;
-      padding: 15px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1000;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
+      padding: 15px 20px;
       position: relative;
     }
 
-    .nav-left, .nav-right {
+    .menu-left,
+    .menu-right {
       display: flex;
       gap: 20px;
-      align-items: center;
     }
 
-    .nav-left a,
-    .nav-right a {
+    nav a {
       text-decoration: none;
       color: #000;
       font-weight: bold;
@@ -45,36 +42,37 @@
     .logo-center {
       position: absolute;
       left: 50%;
+      top: -10px;
       transform: translateX(-50%);
-      z-index: 2;
     }
 
     .logo-center img {
-      height: 60px;
+      height: 70px;
     }
 
     @media (max-width: 700px) {
       nav {
-        flex-direction: column;
-        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .logo-center {
         position: static;
         transform: none;
         margin: 10px 0;
+        order: -1;
       }
 
-      .nav-left,
-      .nav-right {
+      .menu-left, .menu-right {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
       }
     }
 
     .banner-container {
       position: relative;
       overflow: hidden;
-      width: 100%;
     }
 
     #banner-img {
@@ -88,7 +86,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
       color: white;
       border: none;
       font-size: 2em;
@@ -134,7 +132,7 @@
   <!-- Cabeçalho -->
   <header>
     <nav>
-      <div class="nav-left">
+      <div class="menu-left">
         <a href="#">INÍCIO</a>
         <a href="#loja">LOJA</a>
       </div>
@@ -143,7 +141,7 @@
         <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
       </div>
 
-      <div class="nav-right">
+      <div class="menu-right">
         <a href="#">INSTAGRAM</a>
         <a href="#">CONTATO</a>
       </div>
@@ -165,11 +163,7 @@
   <script>
     const imagens = [
       "20250619_170843.jpg",
-      "20250619_174411.jpg",
-      "foto1.jpg",
-      "foto2.jpg",
-      "foto3.jpg",
-      "foto4.jpg"
+      "20250619_174411.jpg"
     ];
 
     let index = 0;
