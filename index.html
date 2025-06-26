@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,62 +6,66 @@
   <style>
     body {
       margin: 0;
-      background-color: #f7eae1;
       font-family: Arial, sans-serif;
-      color: #000;
-    }
-
-    header {
       background-color: #f7eae1;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      font-weight: bold;
-    }
+    }header {
+  background-color: #fff;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
 
-    nav a {
-      margin: 10px;
-      color: black;
-      text-decoration: none;
-    }
+header div {
+  font-weight: bold;
+  font-size: 1.5em;
+}
 
-    .banner-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
+nav a {
+  margin: 0 1em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
 
-    .banner-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: opacity 0.5s ease-in-out;
-    }
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+}
 
-    .banner-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.4);
-      color: white;
-      border: none;
-      font-size: 2em;
-      padding: 10px 15px;
-      cursor: pointer;
-      z-index: 10;
-    }
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
 
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
+.banner-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2em;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+}
 
-    .frase {
-      text-align: center;
-      margin: 40px 0;
-      font-size: 1.2em;
-      font-style: italic;
-    }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.frase {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
   </style>
 </head>
 <body>
@@ -74,17 +77,11 @@
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>
-
-  <div class="banner-container" id="carousel">
+  </header>  <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
     <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
-  </div>
-
-  <div class="frase">A moda passa, o estilo permanece!</div>
-
-  <script>
+  </div>  <div class="frase">A moda passa, o estilo permanece!</div>  <script>
     const imagens = [
       "20250619_170843.jpg",
       "20250619_174411.jpg"
@@ -104,17 +101,14 @@
 
     setInterval(() => trocarImagem(1), 3000);
 
-    // Swipe no celular
     let touchStartX = 0;
     document.getElementById("carousel").addEventListener("touchstart", (e) => {
       touchStartX = e.changedTouches[0].screenX;
     });
-
     document.getElementById("carousel").addEventListener("touchend", (e) => {
-      let touchEndX = e.changedTouches[0].screenX;
+      const touchEndX = e.changedTouches[0].screenX;
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
-  </script>
-</body>
+  </script></body>
 </html>
