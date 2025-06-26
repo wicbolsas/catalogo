@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
   <style>
     body {
@@ -11,18 +11,27 @@
       background-color: #f7eae1;
     }
 
-    /* Cabeçalho */
+    /* HEADER */
     header {
-      background-color: #fff;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      background-color: white;
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
 
-    header a {
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex: 1;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .nav-links a {
       text-decoration: none;
       color: #000;
       font-weight: bold;
@@ -30,22 +39,27 @@
     }
 
     header .logo {
-      height: 40px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 50px;
+      z-index: 2;
     }
 
-    /* Banner */
+    /* CARROSSEL */
     .banner-container {
       position: relative;
-      text-align: center;
+      width: 100%;
       overflow: hidden;
+      background-color: #000;
     }
 
     .banner-container img {
       width: 100%;
-      height: auto;
-      object-fit: contain;
       max-height: 600px;
-      transition: opacity 1s ease-in-out;
+      object-fit: contain;
+      transition: opacity 1s ease;
     }
 
     .banner-btn {
@@ -56,7 +70,7 @@
       color: white;
       border: none;
       font-size: 2em;
-      padding: 10px 15px;
+      padding: 10px;
       cursor: pointer;
       z-index: 10;
     }
@@ -64,60 +78,70 @@
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
+    /* FRASE + BOTÃO */
     .frase {
       text-align: center;
-      margin: 20px 0 10px;
-      font-size: 1.2em;
+      margin: 30px auto 15px;
+      font-size: 1.5em;
       font-style: italic;
+      color: #000;
     }
 
-    .botao-modelos {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .botao-modelos a {
+    .btn-modelos {
+      display: block;
+      margin: 0 auto 40px;
       background-color: black;
       color: white;
-      text-decoration: none;
-      padding: 10px 25px;
-      border-radius: 30px;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
     }
 
-    .botao-modelos a:hover {
+    .btn-modelos:hover {
       background-color: #333;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .frase {
+        font-size: 1.2em;
+        margin: 20px 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Menu com logo centralizada -->
   <header>
-    <a href="#">INÍCIO</a>
-    <a href="#loja">LOJA</a>
-    <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" class="logo">
-    <a href="#">INSTAGRAM</a>
-    <a href="#">CONTATO</a>
+    <div class="nav-links">
+      <a href="#">INÍCIO</a>
+      <a href="#loja">LOJA</a>
+      <a href="#">INSTAGRAM</a>
+      <a href="#">CONTATO</a>
+    </div>
+    <img src="IMG-20240508-WA0022.jpg" alt="Logo WIC" class="logo" />
   </header>
 
-  <!-- Carrossel -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
-    <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
+    <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas">
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
   </div>
 
-  <!-- Frase e botão -->
   <div class="frase">Estilo que acompanha você todos os dias</div>
+  <a class="btn-modelos" href="#loja">Ver modelos</a>
 
-  <div class="botao-modelos">
-    <a href="#loja">Ver modelos</a>
-  </div>
-
-  <!-- Script do carrossel -->
   <script>
     const imagens = [
       "20250619_170843.jpg",
@@ -128,15 +152,12 @@
     const banner = document.getElementById("banner-img");
 
     function trocarImagem(direcao) {
-      index = (index + direcao + imagens.length) % imagens.length;
-      banner.style.opacity = 0.2;
-
+      banner.style.opacity = 0;
       setTimeout(() => {
+        index = (index + direcao + imagens.length) % imagens.length;
         banner.src = imagens[index];
-        banner.onload = () => {
-          banner.style.opacity = 1;
-        };
-      }, 400);
+        banner.style.opacity = 1;
+      }, 300);
     }
 
     setInterval(() => trocarImagem(1), 4000);
@@ -144,11 +165,11 @@
     // Swipe no celular
     let touchStartX = 0;
     document.getElementById("carousel").addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+      touchStartX = e.touches[0].clientX;
     });
 
     document.getElementById("carousel").addEventListener("touchend", (e) => {
-      let touchEndX = e.changedTouches[0].screenX;
+      let touchEndX = e.changedTouches[0].clientX;
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
