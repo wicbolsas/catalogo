@@ -14,22 +14,24 @@
     header {
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: relative;
-      z-index: 1000;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .logo-topo {
+      margin: 10px auto;
+    }
+
+    .logo-topo img {
+      height: 80px;
     }
 
     nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      position: relative;
-    }
-
-    .menu-left,
-    .menu-right {
-      display: flex;
-      gap: 20px;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 10px 0;
     }
 
     nav a {
@@ -37,37 +39,6 @@
       color: #000;
       font-weight: bold;
       font-size: 16px;
-    }
-
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      top: -10px;
-      transform: translateX(-50%);
-    }
-
-    .logo-center img {
-      height: 70px;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .logo-center {
-        position: static;
-        transform: none;
-        margin: 10px 0;
-        order: -1;
-      }
-
-      .menu-left, .menu-right {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
     }
 
     .banner-container {
@@ -125,26 +96,32 @@
     .btn-vermodelos:hover {
       background-color: #333;
     }
+
+    @media (max-width: 700px) {
+      nav {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .logo-topo img {
+        height: 60px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Cabeçalho -->
   <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
+    </div>
+
     <nav>
-      <div class="menu-left">
-        <a href="#">INÍCIO</a>
-        <a href="#loja">LOJA</a>
-      </div>
-
-      <div class="logo-center">
-        <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
-      </div>
-
-      <div class="menu-right">
-        <a href="#">INSTAGRAM</a>
-        <a href="#">CONTATO</a>
-      </div>
+      <a href="#">INÍCIO</a>
+      <a href="#loja">LOJA</a>
+      <a href="#">INSTAGRAM</a>
+      <a href="#">CONTATO</a>
     </nav>
   </header>
 
