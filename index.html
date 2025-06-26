@@ -18,8 +18,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: bold;
       flex-wrap: wrap;
+      font-weight: bold;
     }
 
     nav a {
@@ -78,7 +78,7 @@
 
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
-    <img id="banner-img" src="foto1.jpg" alt="Banner WIC Bolsas" />
+    <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
   </div>
 
@@ -86,9 +86,10 @@
 
   <script>
     const imagens = [
-  "20250619_170843.jpg",
-  "20250619_174411.jpg"
-];
+      "20250619_170843.jpg",
+      "20250619_174411.jpg"
+    ];
+
     let index = 0;
     const banner = document.getElementById("banner-img");
 
