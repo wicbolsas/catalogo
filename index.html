@@ -12,53 +12,62 @@
     }
 
     header {
+      position: relative;
       background-color: white;
       padding: 15px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .header-flex {
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
       padding: 0 20px;
-      flex-wrap: wrap;
+      position: relative;
     }
 
-    .menu {
+    .nav-left, .nav-right {
       display: flex;
       gap: 20px;
       align-items: center;
-      flex: 1;
     }
 
-    .menu a {
+    .nav-left a,
+    .nav-right a {
       text-decoration: none;
       color: #000;
       font-weight: bold;
       font-size: 16px;
     }
 
-    .logo-container {
-      flex-shrink: 0;
-      text-align: center;
-      margin: 0 20px;
+    .logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
     }
 
-    .logo-container img {
-      height: 55px;
+    .logo-center img {
+      height: 60px;
     }
 
-    @media (max-width: 600px) {
-      .header-flex {
+    @media (max-width: 700px) {
+      nav {
         flex-direction: column;
+        gap: 10px;
       }
 
-      .menu {
-        justify-content: center;
+      .logo-center {
+        position: static;
+        transform: none;
         margin: 10px 0;
+      }
+
+      .nav-left,
+      .nav-right {
+        justify-content: center;
       }
     }
 
@@ -66,14 +75,13 @@
       position: relative;
       overflow: hidden;
       width: 100%;
-      height: auto;
     }
 
     #banner-img {
       width: 100%;
       height: auto;
       display: block;
-      transition: opacity 1s ease;
+      transition: opacity 1s ease-in-out;
     }
 
     .banner-btn {
@@ -89,13 +97,8 @@
       z-index: 10;
     }
 
-    .prev-btn {
-      left: 10px;
-    }
-
-    .next-btn {
-      right: 10px;
-    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 
     .frase {
       text-align: center;
@@ -127,24 +130,27 @@
   </style>
 </head>
 <body>
-  <!-- Cabeçalho com logo centralizada -->
+
+  <!-- Cabeçalho -->
   <header>
-    <div class="header-flex">
-      <div class="menu">
+    <nav>
+      <div class="nav-left">
         <a href="#">INÍCIO</a>
         <a href="#loja">LOJA</a>
       </div>
-      <div class="logo-container">
+
+      <div class="logo-center">
         <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
       </div>
-      <div class="menu">
+
+      <div class="nav-right">
         <a href="#">INSTAGRAM</a>
         <a href="#">CONTATO</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Banner com fade -->
+  <!-- Banner -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
     <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
@@ -178,20 +184,20 @@
       }, 500);
     }
 
-    // Troca automática
     setInterval(() => trocarImagem(1), 5000);
 
-    // Swipe para celular
+    // Swipe no celular
     let touchStartX = 0;
     document.getElementById("carousel").addEventListener("touchstart", e => {
       touchStartX = e.changedTouches[0].screenX;
     });
 
     document.getElementById("carousel").addEventListener("touchend", e => {
-      let touchEndX = e.changedTouches[0].screenX;
+      const touchEndX = e.changedTouches[0].screenX;
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
   </script>
+
 </body>
 </html>
