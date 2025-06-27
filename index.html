@@ -44,19 +44,15 @@
     .banner-container {
       position: relative;
       width: 100%;
-      height: 100vh;
-      max-height: 800px;
       overflow: hidden;
       background-color: black;
     }
 
     .banner-img {
       width: 100%;
-      height: 100%;
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: center center;
-      transition: background-image 0.6s ease-in-out, background-position 0.6s ease-in-out;
+      transition: background-image 0.6s ease-in-out, background-position 0.6s ease-in-out, height 0.3s ease-in-out;
     }
 
     .banner-btn {
@@ -100,9 +96,10 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.4s ease;
+      transition: background-color 0.3s ease;
       text-decoration: none;
       text-align: center;
+      z-index: 11;
     }
 
     .btn-vermodelos:hover {
@@ -119,26 +116,20 @@
         height: 100px;
       }
 
+      .banner-img {
+        height: 80vh !important;
+        background-position: center center !important;
+      }
+
       .frase-container {
         font-size: 1.1em;
-        bottom: 60px;
+        bottom: 70px;
       }
 
       .btn-vermodelos {
         bottom: 20px;
         font-size: 0.95em;
         padding: 10px 20px;
-      }
-    }
-
-    @media (min-width: 1000px) {
-      .banner-container {
-        height: 90vh;
-        max-height: 700px;
-      }
-
-      .banner-img {
-        background-position: center 65% !important;
       }
     }
   </style>
@@ -164,38 +155,44 @@
     <div class="banner-img" id="banner-img"></div>
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
 
-    <!-- Frase e botão -->
-    <div class="frase-container">
-      Estilo que acompanha você todos os dias
-    </div>
+    <div class="frase-container">Estilo que acompanha você todos os dias</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>
 
   <!-- Script -->
   <script>
     const imagens = [
-      "20250619_170843.jpg",
-      "20250619_174411.jpg"
+      { src: "20250619_170843.jpg", position: "center 65%", altura: "85vh" },
+      { src: "20250619_174411.jpg", position: "center 50%", altura: "80vh" },
+      { src: "20250619_180230.jpg", position: "center 58%", altura: "83vh" }
+      // Pode adicionar mais com foco personalizado aqui
     ];
 
     let index = 0;
     const banner = document.getElementById("banner-img");
 
-    function mostrarImagem() {
-      banner.style.opacity = 0;
-      setTimeout(() => {
-        banner.style.backgroundImage = `url('${imagens[index]}')`;
-        banner.style.opacity = 1;
-      }, 400);
+    function aplicarImagem() {
+      const atual = imagens[index];
+      banner.style.backgroundImage = `url('${atual.src}')`;
+
+      if (window.innerWidth >= 1000) {
+        // Tela de computador
+        banner.style.height = atual.altura;
+        banner.style.backgroundPosition = atual.position;
+      } else {
+        // No celular: altura fixa, centraliza imagem
+        banner.style.height = "80vh";
+        banner.style.backgroundPosition = "center center";
+      }
     }
 
     function trocarImagem(direcao) {
       index = (index + direcao + imagens.length) % imagens.length;
-      mostrarImagem();
+      aplicarImagem();
     }
 
     setInterval(() => trocarImagem(1), 6000);
-    mostrarImagem();
+    aplicarImagem();
 
     // Swipe no celular
     let touchStartX = 0;
@@ -208,6 +205,9 @@
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
+
+    // Ajusta ao redimensionar a tela
+    window.addEventListener("resize", aplicarImagem);
   </script>
 
 </body>
