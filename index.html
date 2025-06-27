@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,131 +9,120 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #f7eae1;
-    }
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    header {
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    .logo-topo img {
-      height: 90px;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    nav {
-      display: flex;
-      gap: 30px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
+}
 
-    .carousel {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      background-color: black;
-    }
+.carousel-images {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
 
-    .carousel-images {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
-      will-change: transform;
-    }
+.carousel-images img {
+  width: 100vw;
+  height: 85vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
-    .carousel-images img {
-      width: 100vw;
-      height: 85vh;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0 10px;
+  z-index: 2;
+}
 
-    @media (min-width: 1000px) {
-      .carousel-images img {
-        object-fit: contain;
-        background-color: black;
-      }
-    }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.3);
-      color: white;
-      border: none;
-      font-size: 2em;
-      cursor: pointer;
-      padding: 0 10px;
-      z-index: 2;
-    }
+.carousel-text {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-family: 'Lora', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  z-index: 10;
+}
 
-    .carousel-btn.prev { left: 10px; }
-    .carousel-btn.next { right: 10px; }
+.btn-vermodelos {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1em;
+  z-index: 10;
+}
 
-    .carousel-text {
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: white;
-      font-family: 'Lora', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      font-weight: 500;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      z-index: 10;
-    }
+@media (max-width: 700px) {
+  .carousel-images img {
+    height: 80vh;
+    object-position: center center;
+  }
 
-    .btn-vermodelos {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      font-weight: bold;
-      padding: 10px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1em;
-      z-index: 10;
-    }
+  .carousel-text {
+    font-size: 1.2em;
+    bottom: 80px;
+  }
 
-    @media (max-width: 700px) {
-      .carousel-images img {
-        height: 80vh;
-        object-position: center center;
-      }
+  .btn-vermodelos {
+    bottom: 25px;
+    font-size: 0.95em;
+  }
+}
 
-      .carousel-text {
-        font-size: 1.2em;
-        bottom: 80px;
-      }
-
-      .btn-vermodelos {
-        bottom: 25px;
-        font-size: 0.95em;
-      }
-    }
   </style>
 </head>
-<body>
-
-  <!-- Cabeçalho -->
-  <header>
+<body>  <header>
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
     </div>
@@ -144,10 +132,7 @@
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>
-
-  <!-- Banner -->
-  <div class="carousel" id="carousel">
+  </header>  <div class="carousel" id="carousel">
     <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
     <div class="carousel-images" id="carousel-images">
       <img src="20241201_185249.jpg" alt="Banner 1">
@@ -159,42 +144,21 @@
       <img src="20250619_170843.jpg" alt="Banner 7">
       <img src="20250619_174411.jpg" alt="Banner 8">
       <img src="20250619_171810.jpg" alt="Banner 9">
-      <!-- Clone da primeira imagem para loop -->
-      <img src="20241201_185249.jpg" alt="Banner 1 clone">
     </div>
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
     <button class="carousel-btn next" onclick="mudarImagem(1)">&#10095;</button>
-  </div>
-
-  <!-- Script -->
-  <script>
-    const carousel = document.getElementById('carousel-images');
-    const imagens = carousel.children;
-    const total = imagens.length;
+  </div>  <script>
     let index = 0;
-    let trocandoAutomatico = true;
+    const carousel = document.getElementById('carousel-images');
+    const total = carousel.children.length;
 
     function mudarImagem(direcao) {
-      if (!trocandoAutomatico) return;
-
-      index++;
+      index = (index + direcao + total) % total;
       carousel.style.transition = 'transform 0.6s ease-in-out';
       carousel.style.transform = `translateX(-${index * 100}vw)`;
-
-      if (index === total - 1) {
-        trocandoAutomatico = false;
-        setTimeout(() => {
-          carousel.style.transition = 'none';
-          index = 0;
-          carousel.style.transform = `translateX(0)`;
-          trocandoAutomatico = true;
-        }, 700); // tempo da transição + pequena margem
-      }
     }
 
-    setInterval(mudarImagem, 6000);
-  </script>
-
-</body>
+    setInterval(() => mudarImagem(1), 6000);
+  </script></body>
 </html>
