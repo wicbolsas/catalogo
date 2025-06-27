@@ -15,15 +15,14 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding-bottom: 10px;
     }
 
     .logo-topo {
-      margin: 10px auto 0;
+      margin-top: 10px;
     }
 
     .logo-topo img {
-      height: 100px;
+      height: 90px;
     }
 
     nav {
@@ -31,7 +30,7 @@
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
-      padding: 10px 0;
+      padding: 10px 0 20px;
     }
 
     nav a {
@@ -43,30 +42,20 @@
 
     .banner-container {
       position: relative;
-      overflow: hidden;
       width: 100%;
-      height: 85vh;
-      background-color: #000;
+      height: 100vh;
+      max-height: 800px;
+      overflow: hidden;
+      background-color: black;
     }
 
-    #banner-img {
+    .banner-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
-      transition: opacity 1s ease-in-out;
-    }
-
-    @media (max-width: 700px) {
-      #banner-img {
-        object-fit: contain;
-        object-position: center;
-        background-color: #000;
-      }
-
-      .logo-topo img {
-        height: 80px;
-      }
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      transition: background-image 0.6s ease-in-out, background-position 0.6s ease-in-out;
     }
 
     .banner-btn {
@@ -85,17 +74,26 @@
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
-    .frase {
+    .frase-container {
+      position: absolute;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
-      margin: 20px 15px 10px;
+      color: white;
       font-size: 1.4em;
       font-style: italic;
-      color: #000;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 10px;
+      z-index: 11;
     }
 
     .btn-vermodelos {
-      display: block;
-      margin: 10px auto 40px;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: black;
       color: white;
       font-weight: bold;
@@ -107,11 +105,34 @@
       transition: background-color 0.3s ease;
       text-decoration: none;
       text-align: center;
-      max-width: 200px;
+      max-width: 180px;
+      z-index: 11;
     }
 
     .btn-vermodelos:hover {
       background-color: #333;
+    }
+
+    @media (max-width: 700px) {
+      .logo-topo img {
+        height: 100px;
+      }
+
+      .banner-container {
+        height: 80vh;
+      }
+
+      .frase-container {
+        bottom: 110px;
+        font-size: 1.2em;
+        padding: 8px 16px;
+      }
+
+      .btn-vermodelos {
+        bottom: 50px;
+        font-size: 0.95em;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
@@ -122,6 +143,7 @@
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
     </div>
+
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
@@ -133,31 +155,32 @@
   <!-- Banner -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
-    <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
+    <div id="banner" class="banner-img"></div>
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
+
+    <div class="frase-container">Estilo que acompanha você todos os dias</div>
+    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>
 
-  <!-- Frase e botão -->
-  <div class="frase">Estilo que acompanha você todos os dias</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
-
-  <!-- Script carrossel -->
+  <!-- Script do Carrossel -->
   <script>
     const imagens = [
-      "20250619_170843.jpg",
-      "20250619_174411.jpg"
+      { src: "20250619_170843.jpg", position: "center 55%" },
+      { src: "20250619_174411.jpg", position: "center 45%" }
     ];
 
     let index = 0;
-    const banner = document.getElementById("banner-img");
+    const bannerDiv = document.getElementById("banner");
 
     function trocarImagem(direcao) {
-      banner.style.opacity = 0;
       index = (index + direcao + imagens.length) % imagens.length;
-      setTimeout(() => {
-        banner.src = imagens[index];
-        banner.style.opacity = 1;
-      }, 500);
+      atualizarBanner();
+    }
+
+    function atualizarBanner() {
+      const { src, position } = imagens[index];
+      bannerDiv.style.backgroundImage = `url('${src}')`;
+      bannerDiv.style.backgroundPosition = position;
     }
 
     setInterval(() => trocarImagem(1), 5000);
@@ -173,6 +196,9 @@
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
+
+    // Inicializa ao carregar
+    atualizarBanner();
   </script>
 
 </body>
