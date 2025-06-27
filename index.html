@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -58,11 +58,19 @@
       object-fit: cover;
     }
 
+    /* Ajuste apenas no computador */
+    @media (min-width: 1000px) {
+      .carousel-images img {
+        object-fit: contain;
+        background-color: black;
+      }
+    }
+
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0,0,0,0.3);
       color: white;
       border: none;
       font-size: 2em;
@@ -76,7 +84,7 @@
 
     .carousel-text {
       position: absolute;
-      bottom: 30px;
+      bottom: 80px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -91,10 +99,10 @@
 
     .btn-vermodelos {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0,0,0,0.8);
       color: white;
       font-weight: bold;
       padding: 10px 25px;
@@ -137,7 +145,7 @@
     </nav>
   </header>
 
-  <!-- Carrossel -->
+  <!-- Banner -->
   <div class="carousel" id="carousel">
     <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
     <div class="carousel-images" id="carousel-images">
@@ -158,12 +166,9 @@
 
   <!-- Script -->
   <script>
+    let index = 0;
     const carousel = document.getElementById('carousel-images');
     const total = carousel.children.length;
-    let index = 0;
-
-    // Ajusta dinamicamente a largura do carrossel
-    carousel.style.width = `${total * 100}vw`;
 
     function mudarImagem(direcao) {
       index = (index + direcao + total) % total;
