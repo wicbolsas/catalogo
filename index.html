@@ -50,15 +50,16 @@
     .carousel-images {
       display: flex;
       transition: transform 0.6s ease-in-out;
+      will-change: transform;
     }
 
     .carousel-images img {
       width: 100vw;
       height: 85vh;
       object-fit: cover;
+      flex-shrink: 0;
     }
 
-    /* Ajuste apenas no computador */
     @media (min-width: 1000px) {
       .carousel-images img {
         object-fit: contain;
@@ -76,7 +77,7 @@
       font-size: 2em;
       cursor: pointer;
       padding: 0 10px;
-      z-index: 1;
+      z-index: 2;
     }
 
     .carousel-btn.prev { left: 10px; }
@@ -158,6 +159,8 @@
       <img src="20250619_170843.jpg" alt="Banner 7">
       <img src="20250619_174411.jpg" alt="Banner 8">
       <img src="20250619_171810.jpg" alt="Banner 9">
+      <!-- Clone da primeira imagem para loop -->
+      <img src="20241201_185249.jpg" alt="Banner 1 clone">
     </div>
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
@@ -166,16 +169,31 @@
 
   <!-- Script -->
   <script>
-    let index = 0;
     const carousel = document.getElementById('carousel-images');
-    const total = carousel.children.length;
+    const imagens = carousel.children;
+    const total = imagens.length;
+    let index = 0;
+    let trocandoAutomatico = true;
 
     function mudarImagem(direcao) {
-      index = (index + direcao + total) % total;
+      if (!trocandoAutomatico) return;
+
+      index++;
+      carousel.style.transition = 'transform 0.6s ease-in-out';
       carousel.style.transform = `translateX(-${index * 100}vw)`;
+
+      if (index === total - 1) {
+        trocandoAutomatico = false;
+        setTimeout(() => {
+          carousel.style.transition = 'none';
+          index = 0;
+          carousel.style.transform = `translateX(0)`;
+          trocandoAutomatico = true;
+        }, 700); // tempo da transição + pequena margem
+      }
     }
 
-    setInterval(() => mudarImagem(1), 6000);
+    setInterval(mudarImagem, 6000);
   </script>
 
 </body>
