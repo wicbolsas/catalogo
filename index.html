@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
 
-  <!-- Fonte elegante e delicada -->
+  <!-- Fonte elegante -->
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
 
   <style>
@@ -75,27 +75,24 @@
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
-    .frase-container {
+    .frase-bloco {
       position: absolute;
-      top: 10%;
+      bottom: 30px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
+      transform: translateX(-50%);
       text-align: center;
       color: white;
       font-family: 'Lora', serif;
-      font-size: 1.5em;
+      font-size: 1.4em;
       font-style: italic;
       font-weight: 500;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      padding: 0 20px;
+      z-index: 10;
     }
 
     .btn-vermodelos {
-      position: absolute;
-      top: 65%;
-      left: 50%;
-      transform: translateX(-50%);
+      display: inline-block;
+      margin-top: 15px;
       background-color: rgba(0, 0, 0, 0.8);
       color: white;
       font-weight: bold;
@@ -106,8 +103,6 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       text-decoration: none;
-      text-align: center;
-      z-index: 11;
     }
 
     .btn-vermodelos:hover {
@@ -129,13 +124,13 @@
         background-position: center center !important;
       }
 
-      .frase-container {
+      .frase-bloco {
         font-size: 1.1em;
-        top: 50%;
+        bottom: 25px;
+        padding: 0 15px;
       }
 
       .btn-vermodelos {
-        top: 62%;
         font-size: 0.95em;
         padding: 10px 20px;
       }
@@ -163,8 +158,12 @@
     <div class="banner-img" id="banner-img"></div>
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
 
-    <div class="frase-container">Seu estilo, sua identidade. Todos os dias com WIC.</div>
-    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+    <!-- Frase e botão centralizados juntos -->
+    <div class="frase-bloco">
+      Seu estilo, sua identidade. Todos os dias com WIC.
+      <br />
+      <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+    </div>
   </div>
 
   <!-- Script -->
