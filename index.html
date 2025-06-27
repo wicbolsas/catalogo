@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -73,13 +77,14 @@
 
     .frase-container {
       position: absolute;
-      bottom: 60px;
+      bottom: 80px;
       width: 100%;
       text-align: center;
       color: white;
-      font-size: 1.4em;
-      font-style: italic;
-      text-shadow: 1px 1px 3px black;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7em;
+      font-weight: 500;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
       padding: 0 20px;
     }
 
@@ -155,7 +160,7 @@
     <div class="banner-img" id="banner-img"></div>
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
 
-    <div class="frase-container">Estilo que acompanha você todos os dias</div>
+    <div class="frase-container">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>
 
@@ -170,7 +175,6 @@
       { src: "20250619_152431.jpg", position: "center 58%", altura: "83vh" },
       { src: "20250518_131434.jpg", position: "center 58%", altura: "83vh" },
       { src: "20250619_153847.jpg", position: "center 58%", altura: "83vh" }
-      // Pode adicionar mais com foco personalizado aqui
     ];
 
     let index = 0;
@@ -181,11 +185,9 @@
       banner.style.backgroundImage = `url('${atual.src}')`;
 
       if (window.innerWidth >= 1000) {
-        // Tela de computador
         banner.style.height = atual.altura;
         banner.style.backgroundPosition = atual.position;
       } else {
-        // No celular: altura fixa, centraliza imagem
         banner.style.height = "80vh";
         banner.style.backgroundPosition = "center center";
       }
@@ -211,7 +213,6 @@
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
 
-    // Ajusta ao redimensionar a tela
     window.addEventListener("resize", aplicarImagem);
   </script>
 
