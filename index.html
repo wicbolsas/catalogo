@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,26 +17,27 @@
 
     header {
       background-color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       padding-bottom: 10px;
     }
 
     .logo-topo {
-      margin: 15px auto 10px;
-      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
     }
 
     .logo-topo img {
       height: 90px;
-      transition: transform 0.3s ease;
+      max-width: 200px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 30px;
       flex-wrap: wrap;
+      gap: 30px;
       padding: 10px 0;
     }
 
@@ -41,12 +46,11 @@
       color: #000;
       font-weight: bold;
       font-size: 16px;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: #555;
-      transform: scale(1.05);
     }
 
     .banner-container {
@@ -59,7 +63,6 @@
       height: auto;
       display: block;
       transition: opacity 1s ease-in-out;
-      border-radius: 0;
     }
 
     .banner-btn {
@@ -73,12 +76,6 @@
       padding: 10px 15px;
       cursor: pointer;
       z-index: 10;
-      transition: background-color 0.3s ease;
-      border-radius: 8px;
-    }
-
-    .banner-btn:hover {
-      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .prev-btn { left: 10px; }
@@ -89,8 +86,6 @@
       margin: 30px 20px 10px;
       font-size: 1.4em;
       font-style: italic;
-      color: #222;
-      transition: all 0.3s ease;
     }
 
     .btn-vermodelos {
@@ -102,28 +97,57 @@
       font-size: 1em;
       padding: 12px 30px;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
       text-decoration: none;
       text-align: center;
       max-width: 180px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .btn-vermodelos:hover {
       background-color: #333;
-      transform: scale(1.05);
     }
 
-    @media (max-width: 700px) {
+    /* Responsividade total */
+    @media (max-width: 768px) {
       nav {
+        flex-direction: row;
         gap: 20px;
-        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .logo-topo img {
-        height: 100px;
+        height: 80px;
+      }
+
+      .frase {
+        font-size: 1.2em;
+        padding: 0 10px;
+      }
+
+      .btn-vermodelos {
+        font-size: 0.95em;
+        padding: 10px 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 15px;
+      }
+
+      .logo-topo img {
+        height: 70px;
+      }
+
+      .banner-btn {
+        font-size: 1.5em;
+        padding: 8px 12px;
+      }
+
+      .btn-vermodelos {
+        max-width: 160px;
       }
     }
   </style>
@@ -155,7 +179,7 @@
   <div class="frase">Estilo que acompanha você todos os dias</div>
   <a class="btn-vermodelos" href="#loja">Ver modelos</a>
 
-  <!-- Script carrossel -->
+  <!-- Script do carrossel -->
   <script>
     const imagens = [
       "20250619_170843.jpg",
@@ -176,7 +200,7 @@
 
     setInterval(() => trocarImagem(1), 5000);
 
-    // Swipe no celular
+    // Suporte a swipe no celular
     let touchStartX = 0;
     document.getElementById("carousel").addEventListener("touchstart", e => {
       touchStartX = e.changedTouches[0].screenX;
