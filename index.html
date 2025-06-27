@@ -2,13 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -18,26 +14,23 @@
     header {
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
       padding-bottom: 10px;
     }
 
     .logo-topo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 0;
+      margin: 10px auto 0;
     }
 
     .logo-topo img {
-      height: 90px;
-      max-width: 200px;
+      height: 100px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 30px;
+      flex-wrap: wrap;
       padding: 10px 0;
     }
 
@@ -46,23 +39,21 @@
       color: #000;
       font-weight: bold;
       font-size: 16px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #555;
     }
 
     .banner-container {
       position: relative;
+      height: 100vh;
+      width: 100%;
       overflow: hidden;
     }
 
     #banner-img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
       transition: opacity 1s ease-in-out;
+      display: block;
     }
 
     .banner-btn {
@@ -81,16 +72,22 @@
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
-    .frase {
+    .banner-conteudo {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
       text-align: center;
-      margin: 30px 20px 10px;
-      font-size: 1.4em;
+      color: black;
+      z-index: 5;
+    }
+
+    .banner-conteudo .frase {
+      font-size: 1.5em;
       font-style: italic;
+      margin-bottom: 20px;
     }
 
     .btn-vermodelos {
-      display: block;
-      margin: 10px auto 30px;
       background-color: black;
       color: white;
       font-weight: bold;
@@ -99,55 +96,31 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
       text-decoration: none;
-      text-align: center;
-      max-width: 180px;
+      transition: background-color 0.3s ease;
     }
 
     .btn-vermodelos:hover {
       background-color: #333;
     }
 
-    /* Responsividade total */
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
       nav {
-        flex-direction: row;
         gap: 20px;
-        justify-content: center;
       }
 
       .logo-topo img {
         height: 80px;
       }
 
-      .frase {
+      .banner-conteudo .frase {
         font-size: 1.2em;
-        padding: 0 10px;
+        padding: 0 20px;
       }
 
       .btn-vermodelos {
-        font-size: 0.95em;
-        padding: 10px 25px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav a {
-        font-size: 15px;
-      }
-
-      .logo-topo img {
-        height: 70px;
-      }
-
-      .banner-btn {
-        font-size: 1.5em;
-        padding: 8px 12px;
-      }
-
-      .btn-vermodelos {
-        max-width: 160px;
+        padding: 10px 20px;
+        font-size: 0.9em;
       }
     }
   </style>
@@ -159,7 +132,6 @@
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
     </div>
-
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
@@ -168,16 +140,17 @@
     </nav>
   </header>
 
-  <!-- Banner -->
+  <!-- Banner com frase e botão -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
     <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
-  </div>
 
-  <!-- Frase e botão -->
-  <div class="frase">Estilo que acompanha você todos os dias</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+    <div class="banner-conteudo">
+      <div class="frase">Estilo que acompanha você todos os dias</div>
+      <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+    </div>
+  </div>
 
   <!-- Script do carrossel -->
   <script>
@@ -200,7 +173,7 @@
 
     setInterval(() => trocarImagem(1), 5000);
 
-    // Suporte a swipe no celular
+    // Swipe no celular
     let touchStartX = 0;
     document.getElementById("carousel").addEventListener("touchstart", e => {
       touchStartX = e.changedTouches[0].screenX;
