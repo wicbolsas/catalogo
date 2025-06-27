@@ -49,7 +49,6 @@
 
     .carousel-images {
       display: flex;
-      width: 100%;
       transition: transform 0.6s ease-in-out;
     }
 
@@ -57,13 +56,14 @@
       width: 100vw;
       height: 85vh;
       object-fit: cover;
+      flex-shrink: 0;
     }
 
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0,0,0,0.3);
       color: white;
       border: none;
       font-size: 2em;
@@ -140,6 +140,7 @@
   <div class="carousel" id="carousel">
     <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
     <div class="carousel-images" id="carousel-images">
+      <!-- Imagens reais -->
       <img src="20241201_185249.jpg" alt="Banner 1">
       <img src="20250427_112536.jpg" alt="Banner 2">
       <img src="20250504_174618.jpg" alt="Banner 3">
@@ -149,6 +150,8 @@
       <img src="20250619_170843.jpg" alt="Banner 7">
       <img src="20250619_174411.jpg" alt="Banner 8">
       <img src="20250619_171810.jpg" alt="Banner 9">
+      <!-- Cópia da primeira imagem para looping suave -->
+      <img src="20241201_185249.jpg" alt="Banner 1 duplicado">
     </div>
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
@@ -156,21 +159,42 @@
   </div>
 
   <script>
-    let index = 0;
     const carousel = document.getElementById('carousel-images');
     const total = carousel.children.length;
+    let index = 0;
 
     function mudarImagem(direcao) {
-      index = (index + direcao + total) % total;
+      if (direcao === 1 && index === total - 1) return; // Evita pular além
+      if (direcao === -1 && index === 0) {
+        index = total - 2;
+        carousel.style.transition = "none";
+        carousel.style.transform = `translateX(-${index * 100}vw)`;
+        setTimeout(() => {
+          carousel.style.transition = "transform 0.6s ease-in-out";
+          index--;
+          carousel.style.transform = `translateX(-${index * 100}vw)`;
+        }, 20);
+        return;
+      }
+
+      index += direcao;
       carousel.style.transition = "transform 0.6s ease-in-out";
       carousel.style.transform = `translateX(-${index * 100}vw)`;
     }
 
     setInterval(() => {
+      index++;
+      carousel.style.transition = "transform 0.6s ease-in-out";
+      carousel.style.transform = `translateX(-${index * 100}vw)`;
+
+      // Quando atinge a cópia da primeira imagem
       if (index === total - 1) {
-        index = -1;
+        setTimeout(() => {
+          carousel.style.transition = "none";
+          index = 0;
+          carousel.style.transform = `translateX(0)`;
+        }, 600);
       }
-      mudarImagem(1);
     }, 6000);
   </script>
 
