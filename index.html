@@ -1,169 +1,158 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html><html lang="pt-BR">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  font-family: 'Arial', sans-serif;
-  background-color: #fff;
+      font-family: 'Arial', sans-serif;
+      background-color: #f7eae1;
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  position: relative;
-  background-color: white;
+.logo-topo img {
+  height: 90px;
 }
 
 nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.menu {
-  display: flex;
   gap: 30px;
-  font-weight: bold;
-  font-size: 18px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 60px;
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .carousel {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background-color: black;
 }
 
 .carousel-images {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  transition: transform 0.6s ease-in-out;
 }
 
 .carousel-images img {
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   object-fit: cover;
 }
 
-@media (min-width: 1024px) {
-  .carousel-images img:nth-child(1) {
-    object-position: center 30%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(2) {
-    object-position: center 20%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(3) {
-    object-position: center 60%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(4) {
-    object-position: center 20%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(5) {
-    object-position: center 40%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(6) {
-    object-position: center 45%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(7) {
-    object-position: center 35%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(8) {
-    object-position: center 40%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(9) {
-    object-position: center 35%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(10) {
-    object-position: center 50%;
-    height: 92vh;
-  }
-  .carousel-images img:nth-child(11) {
-    object-position: center 40%;
-    height: 92vh;
-  }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0 10px;
+  z-index: 1;
 }
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
 .carousel-text {
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
-  color: white;
-}
-
-.carousel-text h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  margin-bottom: 10px;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  text-shadow: 1px 1px 4px black;
+  padding: 0 10px;
 }
 
-.carousel-text button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: black;
+.btn-vermodelos {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
   color: white;
-  border: none;
+  font-weight: bold;
+  padding: 10px 25px;
   border-radius: 8px;
-  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+@media (max-width: 700px) {
+  .carousel-images img {
+    height: 80vh;
+    object-position: center center;
+  }
+
+  .carousel-text {
+    font-size: 1.2em;
+    bottom: 80px;
+  }
+
+  .btn-vermodelos {
+    bottom: 25px;
+    font-size: 0.95em;
+  }
 }
 
   </style>
-</head><body>
-  <header>
-    <nav>
-      <div class="menu">
-        <a href="#">INÍCIO</a>
-        <a href="#">LOJA</a>
-        <a href="#">INSTAGRAM</a>
-        <a href="#">CONTATO</a>
-      </div>
-      <img class="logo" src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC Bolsas" />
-    </nav>
-  </header>  <section class="carousel">
-    <div class="carousel-images">
-      <img src="IMG_20240626_114003.jpg" alt="Banner 1">
-      <img src="IMG_20240626_113930.jpg" alt="Banner 2">
-      <img src="IMG_20240626_113912.jpg" alt="Banner 3">
-      <img src="IMG_20240626_113854.jpg" alt="Banner 4">
-      <img src="IMG_20240626_113839.jpg" alt="Banner 5">
-      <img src="IMG_20240626_113825.jpg" alt="Banner 6">
-      <img src="IMG_20240626_113808.jpg" alt="Banner 7">
-      <img src="IMG_20240626_113752.jpg" alt="Banner 8">
-      <img src="IMG_20240626_113738.jpg" alt="Banner 9">
-      <img src="IMG_20240626_113721.jpg" alt="Banner 10">
-      <img src="IMG_20240626_113659.jpg" alt="Banner 11">
-    </div>
-    <div class="carousel-text">
-      <h2>Seu estilo, sua identidade. Todos os dias com WIC.</h2>
-      <button>Ver modelos</button>
-    </div>
-  </section>
-</body></html>
+</head>
+<body><header>
+  <div class="logo-topo">
+    <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
+  </div>
+  <nav>
+    <a href="#">INÍCIO</a>
+    <a href="#loja">LOJA</a>
+    <a href="#">INSTAGRAM</a>
+    <a href="#">CONTATO</a>
+  </nav>
+</header><div class="carousel" id="carousel">
+  <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
+  <div class="carousel-images" id="carousel-images">
+    <img src="20241201_185249.jpg" alt="Banner 1">
+    <img src="20250427_112536.jpg" alt="Banner 2">
+    <img src="20250504_174618.jpg" alt="Banner 3">
+    <img src="20250518_131434.jpg" alt="Banner 4">
+    <img src="20250619_152431.jpg" alt="Banner 5">
+    <img src="20250619_153847.jpg" alt="Banner 6">
+    <img src="20250619_170843.jpg" alt="Banner 7">
+    <img src="20250619_174411.jpg" alt="Banner 8">
+  </div>
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+  <button class="carousel-btn next" onclick="mudarImagem(1)">&#10095;</button>
+</div><script>
+  let index = 0;
+  const carousel = document.getElementById('carousel-images');
+  const total = carousel.children.length;
+
+  function mudarImagem(direcao) {
+    index = (index + direcao + total) % total;
+    carousel.style.transform = `translateX(-${index * 100}vw)`;
+  }
+
+  setInterval(() => mudarImagem(1), 6000);
+</script></body>
+</html>
