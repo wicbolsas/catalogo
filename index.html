@@ -1,222 +1,169 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<!DOCTYPE html><html lang="pt-BR"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-
-  <!-- Fonte elegante -->
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f7eae1;
-    }
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+}
 
-    header {
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      padding-bottom: 10px;
-    }
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  background-color: white;
+}
 
-    .logo-topo {
-      margin: 10px auto;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
 
-    .logo-topo img {
-      height: 80px;
-    }
+.menu {
+  display: flex;
+  gap: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 60px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
 
-    .banner-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      background-color: black;
-    }
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
 
-    .banner-img {
-      width: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: background-image 0.6s ease-in-out, background-position 0.6s ease-in-out, height 0.3s ease-in-out;
-    }
+.carousel-images img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 
-    .banner-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.3);
-      color: white;
-      border: none;
-      font-size: 2em;
-      padding: 10px 15px;
-      cursor: pointer;
-      z-index: 10;
-    }
+@media (min-width: 1024px) {
+  .carousel-images img:nth-child(1) {
+    object-position: center 30%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(2) {
+    object-position: center 20%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(3) {
+    object-position: center 60%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(4) {
+    object-position: center 20%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(5) {
+    object-position: center 40%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(6) {
+    object-position: center 45%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(7) {
+    object-position: center 35%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(8) {
+    object-position: center 40%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(9) {
+    object-position: center 35%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(10) {
+    object-position: center 50%;
+    height: 92vh;
+  }
+  .carousel-images img:nth-child(11) {
+    object-position: center 40%;
+    height: 92vh;
+  }
+}
 
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
+.carousel-text {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+}
 
-    .frase-bloco {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: white;
-      font-family: 'Lora', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      font-weight: 500;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      z-index: 10;
-    }
+.carousel-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
 
-    .btn-vermodelos {
-      display: inline-block;
-      margin-top: 15px;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      font-weight: bold;
-      font-size: 1em;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-    }
+.carousel-text button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-    .btn-vermodelos:hover {
-      background-color: #333;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .logo-topo img {
-        height: 100px;
-      }
-
-      .banner-img {
-        height: 80vh !important;
-        background-position: center center !important;
-      }
-
-      .frase-bloco {
-        font-size: 1.1em;
-        bottom: 25px;
-        padding: 0 15px;
-      }
-
-      .btn-vermodelos {
-        font-size: 0.95em;
-        padding: 10px 20px;
-      }
-    }
   </style>
-</head>
-<body>
-
-  <!-- Cabeçalho -->
+</head><body>
   <header>
-    <div class="logo-topo">
-      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
-    </div>
     <nav>
-      <a href="#">INÍCIO</a>
-      <a href="#loja">LOJA</a>
-      <a href="#">INSTAGRAM</a>
-      <a href="#">CONTATO</a>
+      <div class="menu">
+        <a href="#">INÍCIO</a>
+        <a href="#">LOJA</a>
+        <a href="#">INSTAGRAM</a>
+        <a href="#">CONTATO</a>
+      </div>
+      <img class="logo" src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC Bolsas" />
     </nav>
-  </header>
-
-  <!-- Banner -->
-  <div class="banner-container" id="carousel">
-    <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
-    <div class="banner-img" id="banner-img"></div>
-    <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
-
-    <!-- Frase e botão centralizados juntos -->
-    <div class="frase-bloco">
-      Seu estilo, sua identidade. Todos os dias com WIC.
-      <br />
-      <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+  </header>  <section class="carousel">
+    <div class="carousel-images">
+      <img src="IMG_20240626_114003.jpg" alt="Banner 1">
+      <img src="IMG_20240626_113930.jpg" alt="Banner 2">
+      <img src="IMG_20240626_113912.jpg" alt="Banner 3">
+      <img src="IMG_20240626_113854.jpg" alt="Banner 4">
+      <img src="IMG_20240626_113839.jpg" alt="Banner 5">
+      <img src="IMG_20240626_113825.jpg" alt="Banner 6">
+      <img src="IMG_20240626_113808.jpg" alt="Banner 7">
+      <img src="IMG_20240626_113752.jpg" alt="Banner 8">
+      <img src="IMG_20240626_113738.jpg" alt="Banner 9">
+      <img src="IMG_20240626_113721.jpg" alt="Banner 10">
+      <img src="IMG_20240626_113659.jpg" alt="Banner 11">
     </div>
-  </div>
-
-  <!-- Script -->
-  <script>
-    const imagens = [
-      { src: "20250619_170843.jpg", position: "center 45%", altura: "85vh" },
-      { src: "20250619_174411.jpg", position: "center 80%", altura: "85vh" },
-      { src: "20241201_185249.jpg", position: "center 58%", altura: "83vh" },
-      { src: "20250427_112536.jpg", position: "center 58%", altura: "83vh" },
-      { src: "20250504_174618.jpg", position: "center 58%", altura: "83vh" },
-      { src: "20250619_152431.jpg", position: "center 58%", altura: "83vh" },
-      { src: "20250518_131434.jpg", position: "center 58%", altura: "83vh" },
-      { src: "20250619_153847.jpg", position: "center 58%", altura: "83vh" }
-    ];
-
-    let index = 0;
-    const banner = document.getElementById("banner-img");
-
-    function aplicarImagem() {
-      const atual = imagens[index];
-      banner.style.backgroundImage = `url('${atual.src}')`;
-
-      if (window.innerWidth >= 1000) {
-        banner.style.height = atual.altura;
-        banner.style.backgroundPosition = atual.position;
-      } else {
-        banner.style.height = "80vh";
-        banner.style.backgroundPosition = "center center";
-      }
-    }
-
-    function trocarImagem(direcao) {
-      index = (index + direcao + imagens.length) % imagens.length;
-      aplicarImagem();
-    }
-
-    setInterval(() => trocarImagem(1), 6000);
-    aplicarImagem();
-
-    // Swipe no celular
-    let touchStartX = 0;
-    document.getElementById("carousel").addEventListener("touchstart", e => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    document.getElementById("carousel").addEventListener("touchend", e => {
-      const touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX - touchStartX > 50) trocarImagem(-1);
-      if (touchStartX - touchEndX > 50) trocarImagem(1);
-    });
-
-    window.addEventListener("resize", aplicarImagem);
-  </script>
-
-</body>
-</html>
+    <div class="carousel-text">
+      <h2>Seu estilo, sua identidade. Todos os dias com WIC.</h2>
+      <button>Ver modelos</button>
+    </div>
+  </section>
+</body></html>
