@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -46,15 +46,15 @@ nav a {
 
 .carousel-images {
   display: flex;
+  width: 100%;
   transition: transform 0.6s ease-in-out;
-  will-change: transform;
 }
 
 .carousel-images img {
   width: 100vw;
   height: 85vh;
-  object-fit: cover;
-  flex-shrink: 0;
+  object-fit: contain;
+  background-color: black;
 }
 
 .carousel-btn {
@@ -67,7 +67,7 @@ nav a {
   font-size: 2em;
   cursor: pointer;
   padding: 0 10px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .carousel-btn.prev { left: 10px; }
@@ -75,7 +75,7 @@ nav a {
 
 .carousel-text {
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -90,7 +90,7 @@ nav a {
 
 .btn-vermodelos {
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0,0,0,0.8);
@@ -100,13 +100,14 @@ nav a {
   border-radius: 8px;
   text-decoration: none;
   font-size: 1em;
-  z-index: 10;
+  z-index: 11;
 }
 
 @media (max-width: 700px) {
   .carousel-images img {
     height: 80vh;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center;
   }
 
   .carousel-text {
@@ -122,7 +123,8 @@ nav a {
 
   </style>
 </head>
-<body>  <header>
+<body>
+  <header>
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
     </div>
@@ -132,7 +134,8 @@ nav a {
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>  <div class="carousel" id="carousel">
+  </header>
+  <div class="carousel" id="carousel">
     <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
     <div class="carousel-images" id="carousel-images">
       <img src="20241201_185249.jpg" alt="Banner 1">
@@ -144,21 +147,21 @@ nav a {
       <img src="20250619_170843.jpg" alt="Banner 7">
       <img src="20250619_174411.jpg" alt="Banner 8">
       <img src="20250619_171810.jpg" alt="Banner 9">
-    </div>
+    </div> 
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
     <button class="carousel-btn next" onclick="mudarImagem(1)">&#10095;</button>
-  </div>  <script>
+  </div>
+  <script>
     let index = 0;
     const carousel = document.getElementById('carousel-images');
-    const total = carousel.children.length;
+    const total = carousel.children.length;function mudarImagem(direcao) {
+  index = (index + direcao + total) % total;
+  carousel.style.transform = `translateX(-${index * 100}vw)`;
+}
 
-    function mudarImagem(direcao) {
-      index = (index + direcao + total) % total;
-      carousel.style.transition = 'transform 0.6s ease-in-out';
-      carousel.style.transform = `translateX(-${index * 100}vw)`;
-    }
+setInterval(() => mudarImagem(1), 6000);
 
-    setInterval(() => mudarImagem(1), 6000);
-  </script></body>
+  </script>
+</body>
 </html>
