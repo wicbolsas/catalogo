@@ -43,17 +43,30 @@
 
     .banner-container {
       position: relative;
-      width: 100%;
-      max-height: 85vh;
       overflow: hidden;
+      width: 100%;
+      height: 85vh;
+      background-color: #000;
     }
 
     #banner-img {
       width: 100%;
-      height: 85vh;
+      height: 100%;
       object-fit: cover;
-      display: block;
+      object-position: center bottom;
       transition: opacity 1s ease-in-out;
+    }
+
+    @media (max-width: 700px) {
+      #banner-img {
+        object-fit: contain;
+        object-position: center;
+        background-color: #000;
+      }
+
+      .logo-topo img {
+        height: 80px;
+      }
     }
 
     .banner-btn {
@@ -72,26 +85,17 @@
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
-    .banner-conteudo {
-      position: absolute;
-      bottom: 10%;
-      width: 100%;
-      text-align: center;
-      z-index: 5;
-    }
-
     .frase {
+      text-align: center;
+      margin: 20px 15px 10px;
       font-size: 1.4em;
       font-style: italic;
-      display: inline-block;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      color: #000;
     }
 
     .btn-vermodelos {
+      display: block;
+      margin: 10px auto 40px;
       background-color: black;
       color: white;
       font-weight: bold;
@@ -100,42 +104,14 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      text-decoration: none;
       transition: background-color 0.3s ease;
-      display: inline-block;
-      margin-top: 10px;
+      text-decoration: none;
+      text-align: center;
+      max-width: 200px;
     }
 
     .btn-vermodelos:hover {
       background-color: #333;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        gap: 20px;
-      }
-
-      .logo-topo img {
-        height: 80px;
-      }
-
-      .frase {
-        font-size: 1.1em;
-        padding: 8px 16px;
-        margin-bottom: 10px;
-      }
-
-      .btn-vermodelos {
-        font-size: 0.9em;
-        padding: 10px 20px;
-        margin-top: 5px;
-      }
-
-      #banner-img {
-        height: auto;
-        max-height: 70vh;
-        object-fit: contain;
-      }
     }
   </style>
 </head>
@@ -154,20 +130,18 @@
     </nav>
   </header>
 
-  <!-- Banner com frase e botão -->
+  <!-- Banner -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
     <img id="banner-img" src="20250619_170843.jpg" alt="Banner WIC Bolsas" />
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
-
-    <div class="banner-conteudo">
-      <div class="frase">Estilo que acompanha você todos os dias</div>
-      <br />
-      <a class="btn-vermodelos" href="#loja">Ver modelos</a>
-    </div>
   </div>
 
-  <!-- Script do carrossel -->
+  <!-- Frase e botão -->
+  <div class="frase">Estilo que acompanha você todos os dias</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+
+  <!-- Script carrossel -->
   <script>
     const imagens = [
       "20250619_170843.jpg",
