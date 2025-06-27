@@ -44,16 +44,15 @@
     .banner-container {
       position: relative;
       width: 100%;
-      height: auto;
-      background-color: black;
+      max-height: 85vh;
+      overflow: hidden;
     }
 
     #banner-img {
       width: 100%;
-      max-height: 80vh;
-      object-fit: contain;
+      height: 85vh;
+      object-fit: cover;
       display: block;
-      margin: auto;
       transition: opacity 1s ease-in-out;
     }
 
@@ -75,7 +74,7 @@
 
     .banner-conteudo {
       position: absolute;
-      bottom: 5%;
+      bottom: 10%;
       width: 100%;
       text-align: center;
       z-index: 5;
@@ -84,12 +83,12 @@
     .frase {
       font-size: 1.4em;
       font-style: italic;
-      margin-bottom: 15px;
       display: inline-block;
       padding: 10px 20px;
       background: rgba(0, 0, 0, 0.5);
       color: white;
       border-radius: 8px;
+      margin-bottom: 15px;
     }
 
     .btn-vermodelos {
@@ -103,6 +102,8 @@
       cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-top: 10px;
     }
 
     .btn-vermodelos:hover {
@@ -121,11 +122,19 @@
       .frase {
         font-size: 1.1em;
         padding: 8px 16px;
+        margin-bottom: 10px;
       }
 
       .btn-vermodelos {
-        padding: 10px 20px;
         font-size: 0.9em;
+        padding: 10px 20px;
+        margin-top: 5px;
+      }
+
+      #banner-img {
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
       }
     }
   </style>
@@ -153,6 +162,7 @@
 
     <div class="banner-conteudo">
       <div class="frase">Estilo que acompanha você todos os dias</div>
+      <br />
       <a class="btn-vermodelos" href="#loja">Ver modelos</a>
     </div>
   </div>
