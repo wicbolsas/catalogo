@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WIC Bolsas</title>
   <style>
     body {
@@ -15,14 +15,15 @@
       background-color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       text-align: center;
+      padding-bottom: 10px;
     }
 
     .logo-topo {
-      margin-top: 10px;
+      margin: 10px auto;
     }
 
     .logo-topo img {
-      height: 90px;
+      height: 80px;
     }
 
     nav {
@@ -30,7 +31,7 @@
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
-      padding: 10px 0 20px;
+      padding: 10px 0;
     }
 
     nav a {
@@ -76,37 +77,32 @@
 
     .frase-container {
       position: absolute;
-      bottom: 90px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 60px;
+      width: 100%;
       text-align: center;
       color: white;
       font-size: 1.4em;
       font-style: italic;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 10px 20px;
-      border-radius: 10px;
-      z-index: 11;
+      text-shadow: 1px 1px 3px black;
+      padding: 0 20px;
     }
 
     .btn-vermodelos {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.8);
       color: white;
       font-weight: bold;
       font-size: 1em;
-      padding: 12px 30px;
+      padding: 10px 25px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       text-decoration: none;
       text-align: center;
-      max-width: 180px;
-      z-index: 11;
     }
 
     .btn-vermodelos:hover {
@@ -114,24 +110,35 @@
     }
 
     @media (max-width: 700px) {
+      nav {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
       .logo-topo img {
         height: 100px;
       }
 
-      .banner-container {
-        height: 80vh;
-      }
-
       .frase-container {
-        bottom: 110px;
-        font-size: 1.2em;
-        padding: 8px 16px;
+        font-size: 1.1em;
+        bottom: 70px;
       }
 
       .btn-vermodelos {
-        bottom: 50px;
+        bottom: 20px;
         font-size: 0.95em;
         padding: 10px 20px;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .banner-container {
+        height: 85vh;
+        max-height: 700px;
+      }
+
+      .banner-img {
+        background-position: center 60% !important;
       }
     }
   </style>
@@ -143,7 +150,6 @@
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
     </div>
-
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
@@ -155,35 +161,41 @@
   <!-- Banner -->
   <div class="banner-container" id="carousel">
     <button class="banner-btn prev-btn" onclick="trocarImagem(-1)">&#10094;</button>
-    <div id="banner" class="banner-img"></div>
+    <div class="banner-img" id="banner-img"></div>
     <button class="banner-btn next-btn" onclick="trocarImagem(1)">&#10095;</button>
 
-    <div class="frase-container">Estilo que acompanha você todos os dias</div>
+    <!-- Frase e botão -->
+    <div class="frase-container">
+      Estilo que acompanha você todos os dias
+    </div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>
 
-  <!-- Script do Carrossel -->
+  <!-- Script -->
   <script>
     const imagens = [
-      { src: "20250619_170843.jpg", position: "center 55%" },
-      { src: "20250619_174411.jpg", position: "center 45%" }
+      "20250619_170843.jpg",
+      "20250619_174411.jpg"
     ];
 
     let index = 0;
-    const bannerDiv = document.getElementById("banner");
+    const banner = document.getElementById("banner-img");
+
+    function mostrarImagem() {
+      banner.style.opacity = 0;
+      setTimeout(() => {
+        banner.style.backgroundImage = `url('${imagens[index]}')`;
+        banner.style.opacity = 1;
+      }, 400);
+    }
 
     function trocarImagem(direcao) {
       index = (index + direcao + imagens.length) % imagens.length;
-      atualizarBanner();
+      mostrarImagem();
     }
 
-    function atualizarBanner() {
-      const { src, position } = imagens[index];
-      bannerDiv.style.backgroundImage = `url('${src}')`;
-      bannerDiv.style.backgroundPosition = position;
-    }
-
-    setInterval(() => trocarImagem(1), 5000);
+    setInterval(() => trocarImagem(1), 6000);
+    mostrarImagem();
 
     // Swipe no celular
     let touchStartX = 0;
@@ -196,9 +208,6 @@
       if (touchEndX - touchStartX > 50) trocarImagem(-1);
       if (touchStartX - touchEndX > 50) trocarImagem(1);
     });
-
-    // Inicializa ao carregar
-    atualizarBanner();
   </script>
 
 </body>
