@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #f7eae1;
     }
 
@@ -18,7 +18,7 @@
       flex-direction: column;
       align-items: center;
       padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .logo-topo img {
@@ -44,11 +44,12 @@
       position: relative;
       width: 100%;
       overflow: hidden;
-      background: black;
+      background-color: black;
     }
 
     .carousel-images {
       display: flex;
+      width: 100%;
       transition: transform 0.6s ease-in-out;
     }
 
@@ -56,8 +57,7 @@
       width: 100vw;
       height: 85vh;
       object-fit: contain;
-      background-color: black;
-      flex-shrink: 0;
+      background-color: #000;
     }
 
     .carousel-btn {
@@ -78,7 +78,7 @@
 
     .carousel-text {
       position: absolute;
-      bottom: 70px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -103,12 +103,13 @@
       border-radius: 8px;
       text-decoration: none;
       font-size: 1em;
-      z-index: 10;
     }
 
     @media (max-width: 700px) {
       .carousel-images img {
         height: 80vh;
+        object-fit: cover;
+        object-position: center center;
       }
 
       .carousel-text {
@@ -124,7 +125,6 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
@@ -140,17 +140,15 @@
   <div class="carousel" id="carousel">
     <button class="carousel-btn prev" onclick="mudarImagem(-1)">&#10094;</button>
     <div class="carousel-images" id="carousel-images">
-      <img src="20241201_185249.jpg" alt="Banner 1" />
-      <img src="20250427_112536.jpg" alt="Banner 2" />
-      <img src="20250504_174618.jpg" alt="Banner 3" />
-      <img src="20250518_131434.jpg" alt="Banner 4" />
-      <img src="20250619_152431.jpg" alt="Banner 5" />
-      <img src="20250619_153847.jpg" alt="Banner 6" />
-      <img src="20250619_170843.jpg" alt="Banner 7" />
-      <img src="20250619_174411.jpg" alt="Banner 8" />
-      <img src="20250619_171810.jpg" alt="Banner 9" />
-      <!-- Cópia da primeira imagem para looping perfeito -->
-      <img src="20241201_185249.jpg" alt="Banner Clone" />
+      <img src="20241201_185249.jpg" alt="Banner 1">
+      <img src="20250427_112536.jpg" alt="Banner 2">
+      <img src="20250504_174618.jpg" alt="Banner 3">
+      <img src="20250518_131434.jpg" alt="Banner 4">
+      <img src="20250619_152431.jpg" alt="Banner 5">
+      <img src="20250619_153847.jpg" alt="Banner 6">
+      <img src="20250619_170843.jpg" alt="Banner 7">
+      <img src="20250619_174411.jpg" alt="Banner 8">
+      <img src="20250619_171810.jpg" alt="Banner 9">
     </div>
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
@@ -158,33 +156,16 @@
   </div>
 
   <script>
+    let index = 0;
     const carousel = document.getElementById('carousel-images');
     const total = carousel.children.length;
-    let index = 0;
 
     function mudarImagem(direcao) {
-      index += direcao;
-      carousel.style.transition = "transform 0.6s ease-in-out";
+      index = (index + direcao + total) % total;
       carousel.style.transform = `translateX(-${index * 100}vw)`;
-
-      if (index === total - 1) {
-        // Após a transição da cópia, volta para o original sem animação
-        setTimeout(() => {
-          carousel.style.transition = "none";
-          index = 0;
-          carousel.style.transform = `translateX(0)`;
-        }, 600);
-      }
-
-      if (index < 0) {
-        index = total - 2;
-        carousel.style.transition = "none";
-        carousel.style.transform = `translateX(-${index * 100}vw)`;
-      }
     }
 
     setInterval(() => mudarImagem(1), 6000);
   </script>
-
 </body>
 </html>
