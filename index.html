@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #f7eae1;
     }
+
     header {
       background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
       padding: 10px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .logo-topo img {
       height: 90px;
     }
+
     nav {
       display: flex;
       gap: 30px;
@@ -29,6 +29,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     nav a {
       text-decoration: none;
       color: #000;
@@ -36,93 +37,93 @@
       font-size: 16px;
     }
 
-    .carousel-container {
-      width: 100%;
-      overflow: hidden;
+    .carousel {
       position: relative;
+      width: 100%;
       background-color: white;
     }
 
     .carousel-group {
-      display: none;
+      display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 20px;
-      transition: opacity 1s ease-in-out;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 20px 0;
     }
 
     .carousel-group.active {
-      display: flex;
       opacity: 1;
+      position: relative;
     }
 
     .carousel-group img {
       width: 30vw;
       height: auto;
       object-fit: contain;
-      background: white;
-      padding: 10px;
+      background-color: white;
     }
 
     @media (max-width: 700px) {
-      .carousel-group img {
-        width: 90vw;
-      }
       .carousel-group {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+      }
+
+      .carousel-group img {
+        width: 90vw;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo-topo">
-      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
-    </div>
-    <nav>
-      <a href="#">INÍCIO</a>
-      <a href="#loja">LOJA</a>
-      <a href="#">INSTAGRAM</a>
-      <a href="#">CONTATO</a>
-    </nav>
-  </header>
 
-  <div class="carousel-container">
-    <div class="carousel-group active">
-      <img src="20241201_185249.jpg" alt="Banner 1">
-      <img src="20250427_112536.jpg" alt="Banner 2">
-      <img src="20250504_174618.jpg" alt="Banner 3">
-    </div>
-    <div class="carousel-group">
-      <img src="20250518_131434.jpg" alt="Banner 4">
-      <img src="20250619_152431.jpg" alt="Banner 5">
-      <img src="20250619_153847.jpg" alt="Banner 6">
-    </div>
-    <div class="carousel-group">
-      <img src="20250619_170843.jpg" alt="Banner 7">
-      <img src="20250619_174411.jpg" alt="Banner 8">
-      <img src="20250619_171810.jpg" alt="Banner 9">
-    </div>
+<header>
+  <div class="logo-topo">
+    <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
   </div>
+  <nav>
+    <a href="#">INÍCIO</a>
+    <a href="#loja">LOJA</a>
+    <a href="#">INSTAGRAM</a>
+    <a href="#">CONTATO</a>
+  </nav>
+</header>
 
-  <script>
-    const groups = document.querySelectorAll('.carousel-group');
-    let current = 0;
+<div class="carousel" id="carousel">
+  <div class="carousel-group active">
+    <img src="20241201_185249.jpg" alt="Banner 1">
+    <img src="20250427_112536.jpg" alt="Banner 2">
+    <img src="20250504_174618.jpg" alt="Banner 3">
+  </div>
+  <div class="carousel-group">
+    <img src="20250518_131434.jpg" alt="Banner 4">
+    <img src="20250619_152431.jpg" alt="Banner 5">
+    <img src="20250619_153847.jpg" alt="Banner 6">
+  </div>
+  <div class="carousel-group">
+    <img src="20250619_170843.jpg" alt="Banner 7">
+    <img src="20250619_174411.jpg" alt="Banner 8">
+    <img src="20250619_171810.jpg" alt="Banner 9">
+  </div>
+</div>
 
-    function showGroup(index) {
-      groups.forEach((group, i) => {
-        group.classList.remove('active');
-        group.style.opacity = 0;
-      });
-      groups[index].classList.add('active');
-      groups[index].style.opacity = 1;
-    }
+<script>
+  let currentGroup = 0;
+  const groups = document.querySelectorAll('.carousel-group');
 
-    setInterval(() => {
-      current = (current + 1) % groups.length;
-      showGroup(current);
-    }, 6000);
-  </script>
+  function showNextGroup() {
+    groups[currentGroup].classList.remove('active');
+    currentGroup = (currentGroup + 1) % groups.length;
+    groups[currentGroup].classList.add('active');
+  }
+
+  setInterval(showNextGroup, 6000);
+</script>
+
 </body>
 </html>
