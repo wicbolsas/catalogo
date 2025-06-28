@@ -1,81 +1,147 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contato - WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WIC Bolsas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 30px 20px;
-    }
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    .logo {
-      margin-bottom: 30px;
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    .logo img {
-      height: 100px;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5em;
-      margin-bottom: 40px;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    .contato-item {
-      display: flex;
-      align-items: center;
-      font-size: 1.2em;
-      gap: 10px;
-      margin: 15px 0;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
 
-    .contato-item i {
-      font-size: 1.5em;
-      color: #000;
-    }
+.carousel-set {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  position: absolute;
+  width: 100%;
+}
 
-    a {
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.carousel-set.active {
+  opacity: 1;
+  position: relative;
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+.carousel-set img {
+  width: 100%;
+  max-width: 32%;
+  height: auto;
+  object-fit: cover;
+  background-color: white;
+}
+
+.carousel-text {
+  text-align: center;
+  color: #000;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.btn-vermodelos {
+  display: block;
+  margin: 15px auto 40px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .carousel-set {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .carousel-set img {
+    max-width: 32%;
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
+    </div>
+    <nav>
+      <a href="#">INÍCIO</a>
+      <a href="#loja">CATÁLOGO</a>
+      <a href="#">MARCAS</a>
+      <a href="contato.html">CONTATO</a>
+    </nav>
+  </header>  <div class="carousel" id="carousel">
+    <div class="carousel-set active">
+      <img src="20241201_185249.jpg" alt="1">
+      <img src="20250427_112536.jpg" alt="2">
+      <img src="20250504_174618.jpg" alt="3">
+    </div>
+    <div class="carousel-set">
+      <img src="20250518_131434.jpg" alt="4">
+      <img src="20250619_152431.jpg" alt="5">
+      <img src="20250619_153847.jpg" alt="6">
+    </div>
+    <div class="carousel-set">
+      <img src="20250619_170843.jpg" alt="7">
+      <img src="20250619_174411.jpg" alt="8">
+      <img src="20250619_171810.jpg" alt="9">
+    </div>
+  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
+    const sets = document.querySelectorAll('.carousel-set');
+    let currentIndex = 0;
+    let order = [0, 1, 2];
 
-  <!-- Logo -->
-  <div class="logo">
-    <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
-  </div>
-
-  <h1>Entre em contato</h1>
-
-  <div class="contato-item">
-    <i class="fab fa-whatsapp"></i>
-    <span>(xx) xxxxx-xxxx</span>
-  </div>
-
-  <div class="contato-item">
-    <i class="fab fa-instagram"></i>
-    <span>@wicbolsas</span>
-  </div>
-
-</body>
-</html>
+    function embaralharOrdemCentro() {
+      let todas = [0, 1, 2];
+      const ultimoCentro = order[1];
+      todas = todas.filter(i => i !== ultimoCentro);
+      const novoCentro = todas[Math.floor(Math.random() * todas.length)];
+      const outras = [0, 1, 2].filter(i => i !== novoCentro);
+      order
