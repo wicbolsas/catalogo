@@ -14,12 +14,10 @@
     }
 
     header {
+      text-align: center;
+      padding: 20px 0;
       background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .logo-topo img {
@@ -27,11 +25,11 @@
     }
 
     nav {
-      display: flex;
-      gap: 30px;
       margin-top: 10px;
-      flex-wrap: wrap;
+      display: flex;
       justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -43,12 +41,12 @@
 
     .contato-container {
       text-align: center;
-      padding: 50px 20px;
+      padding: 40px 20px;
       font-family: 'Playfair Display', serif;
     }
 
     .contato-item {
-      margin: 30px 0;
+      margin: 25px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -57,9 +55,9 @@
     }
 
     .contato-item img {
-      height: 30px;
-      width: 30px;
-      filter: invert(0%) grayscale(100%);
+      height: 28px;
+      width: 28px;
+      filter: brightness(0) invert(0);
     }
 
     a {
@@ -80,34 +78,32 @@
       }
 
       .contato-item img {
-        height: 26px;
-        width: 26px;
+        height: 24px;
+        width: 24px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Cabeçalho com logo e menu -->
   <header>
     <div class="logo-topo">
       <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
     </div>
     <nav>
       <a href="index.html">INÍCIO</a>
-      <a href="index.html#loja">CATÁLOGO</a>
-      <a href="index.html#marcas">MARCAS</a>
+      <a href="#loja">CATÁLOGO</a>
+      <a href="#">MARCAS</a>
       <a href="contato.html">CONTATO</a>
     </nav>
   </header>
 
-  <!-- Conteúdo de contato -->
   <section class="contato-container">
     <div class="contato-item">
-      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384023.png" alt="WhatsApp (ícone contorno)" />
       <span>(11) 91234-5678</span>
     </div>
     <div class="contato-item">
-      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670274.png" alt="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram (ícone contorno)" />
       <a href="https://www.instagram.com/wicbolsas" target="_blank">@wicbolsas</a>
     </div>
   </section>
