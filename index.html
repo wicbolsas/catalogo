@@ -1,174 +1,176 @@
-<!DOCTYPE html><html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
-    }header {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.logo-topo img {
-  height: 90px;
-}
-
-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.carousel-set {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  position: absolute;
-  width: 100%;
-}
-
-.carousel-set.active {
-  opacity: 1;
-  position: relative;
-}
-
-.carousel-set img {
-  width: 100%;
-  max-width: 32%;
-  height: auto;
-  object-fit: cover;
-  background-color: white;
-}
-
-.carousel-controls {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.carousel-text {
-  text-align: center;
-  color: #000;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4em;
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 20px;
-}
-
-.btn-vermodelos {
-  display: block;
-  margin: 15px auto 40px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  font-weight: bold;
-  padding: 10px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1em;
-  text-align: center;
-  max-width: 200px;
-}
-
-@media (max-width: 768px) {
-  .carousel-set {
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-  .carousel-set img {
-    max-width: 32%;
-    height: auto;
-  }
-}
-
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo-topo">
-      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
-    </div>
-    <nav>
-      <a href="#">INÍCIO</a>
-      <a href="#loja">CATÁLOGO</a>
-      <a href="#">MARCAS</a>
-      <a href="#">CONTATO</a>
-    </nav>
-  </header>  <div class="carousel" id="carousel">
-    <!-- Os conjuntos de imagens -->
-    <div class="carousel-set active">
-      <img src="20241201_185249.jpg" alt="1">
-      <img src="20250427_112536.jpg" alt="2">
-      <img src="20250504_174618.jpg" alt="3">
-    </div>
-    <div class="carousel-set">
-      <img src="20250518_131434.jpg" alt="4">
-      <img src="20250619_152431.jpg" alt="5">
-      <img src="20250619_153847.jpg" alt="6">
-    </div>
-    <div class="carousel-set">
-      <img src="20250619_170843.jpg" alt="7">
-      <img src="20250619_174411.jpg" alt="8">
-      <img src="20250619_171810.jpg" alt="9">
-    </div>
-  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
-    const sets = document.querySelectorAll('.carousel-set');
-    let currentIndex = 0;
-    let order = [0, 1, 2];
-
-    function embaralharOrdemCentro() {
-      let todas = [0, 1, 2];
-      const ultimoCentro = order[1];
-      todas = todas.filter(i => i !== ultimoCentro);
-      const novoCentro = todas[Math.floor(Math.random() * todas.length)];
-      const outras = [0, 1, 2].filter(i => i !== novoCentro);
-      order = [outras[0], novoCentro, outras[1]];
+<!DOCTYPE html>
+<html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>WIC Bolsas</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />  
+  <style>  
+    body {  
+      margin: 0;  
+      font-family: 'Arial', sans-serif;  
+      background-color: #ffffff;  
     }
+    
+    header {  
+      background-color: white;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      padding: 10px 0;  
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+    }  
 
-    function trocarSet() {
-      sets.forEach(set => set.classList.remove('active'));
-      currentIndex = (currentIndex + 1) % sets.length;
+    .logo-topo img {  
+      height: 90px;  
+    }  
 
-      // Reorganiza o trio antes de exibir
-      const imagens = sets[currentIndex].querySelectorAll('img');
-      embaralharOrdemCentro();
-      const novasImgs = order.map(i => imagens[i].src);
+    nav {  
+      display: flex;  
+      gap: 30px;  
+      margin-top: 10px;  
+      flex-wrap: wrap;  
+      justify-content: center;  
+    }  
 
-      imagens.forEach((img, idx) => {
-        img.src = novasImgs[idx];
-      });
+    nav a {  
+      text-decoration: none;  
+      color: #000;  
+      font-weight: bold;  
+      font-size: 16px;  
+    }  
 
-      sets[currentIndex].classList.add('active');
-    }
+    .carousel {  
+      position: relative;  
+      width: 100%;  
+      overflow: hidden;  
+      background-color: #ffffff;  
+    }  
 
-    setInterval(trocarSet, 6000);
-  </script></body>
+    .carousel-set {  
+      display: flex;  
+      justify-content: center;  
+      gap: 10px;  
+      opacity: 0;  
+      transition: opacity 1s ease-in-out;  
+      position: absolute;  
+      width: 100%;  
+    }  
+
+    .carousel-set.active {  
+      opacity: 1;  
+      position: relative;  
+    }  
+
+    .carousel-set img {  
+      width: 100%;  
+      max-width: 32%;  
+      height: auto;  
+      object-fit: cover;  
+      background-color: white;  
+    }  
+
+    .carousel-text {  
+      text-align: center;  
+      color: #000;  
+      font-family: 'Playfair Display', serif;  
+      font-size: 1.4em;  
+      font-style: italic;  
+      font-weight: 500;  
+      margin-top: 20px;  
+    }  
+
+    .btn-vermodelos {  
+      display: block;  
+      margin: 15px auto 40px;  
+      background: rgba(0,0,0,0.8);  
+      color: white;  
+      font-weight: bold;  
+      padding: 10px 25px;  
+      border-radius: 8px;  
+      text-decoration: none;  
+      font-size: 1em;  
+      text-align: center;  
+      max-width: 200px;  
+    }  
+
+    @media (max-width: 768px) {  
+      .carousel-set {  
+        flex-direction: row;  
+        flex-wrap: nowrap;  
+      }  
+
+      .carousel-set img {  
+        max-width: 32%;  
+        height: auto;  
+      }  
+    }  
+  </style>  
+</head>  
+<body>  
+  <header>  
+    <div class="logo-topo">  
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">  
+    </div>  
+    <nav>  
+      <a href="#">INÍCIO</a>  
+      <a href="#loja">CATÁLOGO</a>  
+      <a href="https://www.instagram.com/wicbolsas?igsh=cmt2M3hraXU5MDdm" target="_blank">INSTAGRAM</a>  
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank">CONTATO</a>  
+    </nav>  
+  </header>  
+
+  <div class="carousel" id="carousel">  
+    <div class="carousel-set active">  
+      <img src="20241201_185249.jpg" alt="1">  
+      <img src="20250427_112536.jpg" alt="2">  
+      <img src="20250504_174618.jpg" alt="3">  
+    </div>  
+    <div class="carousel-set">  
+      <img src="20250518_131434.jpg" alt="4">  
+      <img src="20250619_152431.jpg" alt="5">  
+      <img src="20250619_153847.jpg" alt="6">  
+    </div>  
+    <div class="carousel-set">  
+      <img src="20250619_170843.jpg" alt="7">  
+      <img src="20250619_174411.jpg" alt="8">  
+      <img src="20250619_171810.jpg" alt="9">  
+    </div>  
+  </div>  
+
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>  
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  
+
+  <script>  
+    const sets = document.querySelectorAll('.carousel-set');  
+    let currentIndex = 0;  
+    let order = [0, 1, 2];  
+
+    function embaralharOrdemCentro() {  
+      let todas = [0, 1, 2];  
+      const ultimoCentro = order[1];  
+      todas = todas.filter(i => i !== ultimoCentro);  
+      const novoCentro = todas[Math.floor(Math.random() * todas.length)];  
+      const outras = [0, 1, 2].filter(i => i !== novoCentro);  
+      order = [outras[0], novoCentro, outras[1]];  
+    }  
+
+    function trocarSet() {  
+      sets.forEach(set => set.classList.remove('active'));  
+      currentIndex = (currentIndex + 1) % sets.length;  
+
+      const imagens = sets[currentIndex].querySelectorAll('img');  
+      embaralharOrdemCentro();  
+      const novasImgs = order.map(i => imagens[i].src);  
+
+      imagens.forEach((img, idx) => {  
+        img.src = novasImgs[idx];  
+      });  
+
+      sets[currentIndex].classList.add('active');  
+    }  
+
+    setInterval(trocarSet, 6000);  
+  </script>  
+</body>  
 </html>
