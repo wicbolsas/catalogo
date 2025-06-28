@@ -11,7 +11,6 @@
       font-family: 'Arial', sans-serif;
       background-color: #f7eae1;
     }
-
     header {
       background-color: white;
       display: flex;
@@ -20,11 +19,9 @@
       padding: 10px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-
     .logo-topo img {
       height: 90px;
     }
-
     nav {
       display: flex;
       gap: 30px;
@@ -32,7 +29,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     nav a {
       text-decoration: none;
       color: #000;
@@ -40,74 +36,41 @@
       font-size: 16px;
     }
 
-    .carousel {
-      position: relative;
+    .carousel-container {
       width: 100%;
       overflow: hidden;
-      background-color: #fff;
-      height: 85vh;
+      position: relative;
+      background-color: white;
     }
 
-    .carousel-images {
-      display: flex;
+    .carousel-group {
+      display: none;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .carousel-images img {
-      width: 33.3333vw;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
+      gap: 20px;
       transition: opacity 1s ease-in-out;
-      position: absolute;
-      top: 0;
     }
 
-    .carousel-images img.active {
+    .carousel-group.active {
+      display: flex;
       opacity: 1;
-      position: relative;
     }
 
-    .carousel-text {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      font-weight: 500;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      z-index: 10;
+    .carousel-group img {
+      width: 30vw;
+      height: auto;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
     }
 
-    .btn-vermodelos {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      font-weight: bold;
-      padding: 10px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1em;
-      z-index: 10;
-    }
-
-    @media (max-width: 768px) {
-      .carousel-images img {
-        width: 100vw;
-        height: 80vh;
+    @media (max-width: 700px) {
+      .carousel-group img {
+        width: 90vw;
+      }
+      .carousel-group {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -125,36 +88,41 @@
     </nav>
   </header>
 
-  <div class="carousel">
-    <div class="carousel-images" id="carousel-images">
-      <img src="20241201_185249.jpg" class="active" alt="Banner 1">
-      <img src="20250427_112536.jpg" class="active" alt="Banner 2">
-      <img src="20250504_174618.jpg" class="active" alt="Banner 3">
+  <div class="carousel-container">
+    <div class="carousel-group active">
+      <img src="20241201_185249.jpg" alt="Banner 1">
+      <img src="20250427_112536.jpg" alt="Banner 2">
+      <img src="20250504_174618.jpg" alt="Banner 3">
+    </div>
+    <div class="carousel-group">
       <img src="20250518_131434.jpg" alt="Banner 4">
       <img src="20250619_152431.jpg" alt="Banner 5">
       <img src="20250619_153847.jpg" alt="Banner 6">
+    </div>
+    <div class="carousel-group">
       <img src="20250619_170843.jpg" alt="Banner 7">
       <img src="20250619_174411.jpg" alt="Banner 8">
       <img src="20250619_171810.jpg" alt="Banner 9">
     </div>
-    <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
-    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>
 
   <script>
-    const images = document.querySelectorAll('.carousel-images img');
-    let currentIndex = 0;
+    const groups = document.querySelectorAll('.carousel-group');
+    let current = 0;
 
-    function showNextImages() {
-      images.forEach(img => img.classList.remove('active'));
-      for (let i = 0; i < 3; i++) {
-        const index = (currentIndex + i) % images.length;
-        images[index].classList.add('active');
-      }
-      currentIndex = (currentIndex + 3) % images.length;
+    function showGroup(index) {
+      groups.forEach((group, i) => {
+        group.classList.remove('active');
+        group.style.opacity = 0;
+      });
+      groups[index].classList.add('active');
+      groups[index].style.opacity = 1;
     }
 
-    setInterval(showNextImages, 6000);
+    setInterval(() => {
+      current = (current + 1) % groups.length;
+      showGroup(current);
+    }, 6000);
   </script>
 </body>
 </html>
