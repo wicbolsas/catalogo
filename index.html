@@ -1,99 +1,111 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-    }
+      font-family: 'Arial', sans-serif;
+      background-color: #f7eae1;
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    header {
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    .logo-topo img {
-      height: 90px;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    nav {
-      display: flex;
-      gap: 30px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  padding: 20px 0;
+}
 
-    .fade-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      position: relative;
-      background: white;
-      transition: opacity 1.5s ease-in-out;
-    }
+.carousel-images {
+  display: flex;
+  gap: 10px;
+  transition: opacity 1.4s ease-in-out;
+  opacity: 1;
+}
 
-    .fade-container img {
-      width: 28vw;
-      height: auto;
-      object-fit: contain;
-      transition: all 0.5s ease-in-out;
-    }
+.carousel-images img {
+  width: 28vw;
+  max-width: 100%;
+  height: 85vh;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: white;
+}
 
-    .frase {
-      text-align: center;
-      font-family: 'Lora', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      margin-top: 10px;
-    }
+.carousel.fade {
+  opacity: 0;
+}
 
-    .btn-vermodelos {
-      display: block;
-      margin: 15px auto 30px;
-      background: #000;
-      color: #fff;
-      font-weight: bold;
-      padding: 10px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1em;
-      width: fit-content;
-    }
+.carousel-text {
+  font-family: 'Lora', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  color: #000;
+  margin-top: 20px;
+  text-align: center;
+}
 
-    @media (max-width: 768px) {
-      .fade-container {
-        overflow-x: auto;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center;
-        gap: 10px;
-        height: auto !important;
-      }
+.btn-vermodelos {
+  margin-top: 10px;
+  padding: 10px 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-      .fade-container img {
-        width: 90vw !important;
-        height: auto !important;
-        object-fit: contain;
-      }
-    }
+@media (max-width: 768px) {
+  .carousel-images {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel-images img {
+    width: 80vw;
+    height: auto;
+  }
+
+  .carousel-text {
+    font-size: 1.1em;
+    margin-top: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -107,52 +119,58 @@
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>
-
-  <div id="fadeBanner" class="fade-container">
-    <!-- Imagens serão inseridas via JavaScript -->
-  </div>
-
-  <div class="frase">Seu estilo, sua identidade. Todos os dias com WIC.</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
-
-  <script>
-    const grupos = [
-      ["20241201_185249.jpg", "20250427_112536.jpg", "20250504_174618.jpg"],
-      ["20250518_131434.jpg", "20250619_152431.jpg", "20250619_153847.jpg"],
-      ["20250619_170843.jpg", "20250619_174411.jpg", "20250619_171810.jpg"]
+  </header>  <div class="carousel" id="carousel">
+    <div class="carousel-images" id="carousel-images"></div>
+    <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
+    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+  </div>  <script>
+    const imagens = [
+      "20241201_185249.jpg",
+      "20250427_112536.jpg",
+      "20250504_174618.jpg",
+      "20250518_131434.jpg",
+      "20250619_152431.jpg",
+      "20250619_153847.jpg",
+      "20250619_170843.jpg",
+      "20250619_174411.jpg",
+      "20250619_171810.jpg"
     ];
 
-    let indexGrupo = 0;
-    const fadeDiv = document.getElementById("fadeBanner");
+    let index = 0;
+    const carousel = document.getElementById('carousel');
+    const container = document.getElementById('carousel-images');
 
-    function embaralhar(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
+    function shuffleMiddleImages(group) {
+      const [first, , third] = group;
+      const middleOptions = imagens.filter(img => ![first, third].includes(img));
+      const middle = middleOptions[Math.floor(Math.random() * middleOptions.length)];
+      return [first, middle, third];
     }
 
-    function exibirGrupo() {
-      fadeDiv.style.opacity = 0;
+    function showImages() {
+      carousel.classList.add('fade');
+
       setTimeout(() => {
-        fadeDiv.innerHTML = "";
-        const grupoAtual = [...grupos[indexGrupo]];
-        embaralhar(grupoAtual);
-        grupoAtual.forEach(src => {
-          const img = document.createElement("img");
+        let grupo = imagens.slice(index, index + 3);
+        if (grupo.length < 3) {
+          grupo = grupo.concat(imagens.slice(0, 3 - grupo.length));
+        }
+
+        grupo = shuffleMiddleImages(grupo);
+
+        container.innerHTML = '';
+        grupo.forEach(src => {
+          const img = document.createElement('img');
           img.src = src;
-          img.alt = "Banner";
-          fadeDiv.appendChild(img);
+          container.appendChild(img);
         });
-        fadeDiv.style.opacity = 1;
-        indexGrupo = (indexGrupo + 1) % grupos.length;
-      }, 600);
+
+        index = (index + 3) % imagens.length;
+        carousel.classList.remove('fade');
+      }, 400);
     }
 
-    setInterval(exibirGrupo, 6000);
-    exibirGrupo();
-  </script>
-</body>
+    showImages();
+    setInterval(showImages, 7000);
+  </script></body>
 </html>
