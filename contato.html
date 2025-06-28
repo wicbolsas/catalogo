@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato - WIC Bolsas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .logo-topo img {
+      height: 90px;
+    }
+
+    .contato-container {
+      text-align: center;
+      padding: 40px 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .contato-item {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.2em;
+    }
+
+    .contato-item img {
+      height: 28px;
+      width: 28px;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .contato-item {
+        font-size: 1em;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .contato-item img {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
+    </div>
+  </header>
+
+  <section class="contato-container">
+    <div class="contato-item">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+      <span>(11) 91234-5678</span>
+    </div>
+    <div class="contato-item">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+      <a href="https://www.instagram.com/wicbolsas" target="_blank">@wicbolsas</a>
+    </div>
+  </section>
+</body>
+</html>
