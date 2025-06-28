@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,80 +8,82 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #f7eae1;
-    }
+    }header {
+  background-color: white;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    header {
-      background-color: white;
-      text-align: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    .logo-topo img {
-      height: 90px;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    nav {
-      display: flex;
-      gap: 30px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+}
 
-    .carousel {
-      position: relative;
-      width: 100%;
-      background-color: white;
-    }
+.carousel-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+}
 
-    .carousel-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      opacity: 0;
-      transition: opacity 1.8s ease-in-out;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      padding: 20px 0;
-    }
+.carousel-group.active {
+  opacity: 1;
+  position: relative;
+}
 
-    .carousel-group.active {
-      opacity: 1;
-      position: relative;
-    }
+.carousel-group img {
+  width: 30vw;
+  height: auto;
+  object-fit: contain;
+  background-color: white;
+}
 
-    .carousel-group img {
-      width: 30vw;
-      height: auto;
-      object-fit: contain;
-      background-color: white;
-    }
+@media (max-width: 700px) {
+  .carousel-group {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+  }
 
-    @media (max-width: 700px) {
-      .carousel-group {
-        flex-direction: column;
-        align-items: center;
-      }
+  .carousel-group img {
+    width: 30vw;
+    height: auto;
+  }
+}
 
-      .carousel-group img {
-        width: 90vw;
-      }
-    }
   </style>
 </head>
-<body>
-
-<header>
+<body><header>
   <div class="logo-topo">
     <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
   </div>
@@ -92,9 +93,7 @@
     <a href="#">INSTAGRAM</a>
     <a href="#">CONTATO</a>
   </nav>
-</header>
-
-<div class="carousel" id="carousel">
+</header><div class="carousel" id="carousel">
   <div class="carousel-group active">
     <img src="20241201_185249.jpg" alt="Banner 1">
     <img src="20250427_112536.jpg" alt="Banner 2">
@@ -110,9 +109,7 @@
     <img src="20250619_174411.jpg" alt="Banner 8">
     <img src="20250619_171810.jpg" alt="Banner 9">
   </div>
-</div>
-
-<script>
+</div><script>
   let currentGroup = 0;
   const groups = document.querySelectorAll('.carousel-group');
 
@@ -123,7 +120,5 @@
   }
 
   setInterval(showNextGroup, 6000);
-</script>
-
-</body>
+</script></body>
 </html>
