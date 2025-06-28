@@ -1,176 +1,229 @@
 <!DOCTYPE html>
-<html lang="pt-BR">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>WIC Bolsas</title>  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />  
-  <style>  
-    body {  
-      margin: 0;  
-      font-family: 'Arial', sans-serif;  
-      background-color: #ffffff;  
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WIC Bolsas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffffff;
     }
-    
-    header {  
-      background-color: white;  
-      display: flex;  
-      flex-direction: column;  
-      align-items: center;  
-      padding: 10px 0;  
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
-    }  
 
-    .logo-topo img {  
-      height: 90px;  
-    }  
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    nav {  
-      display: flex;  
-      gap: 30px;  
-      margin-top: 10px;  
-      flex-wrap: wrap;  
-      justify-content: center;  
-    }  
+    .logo-topo img {
+      height: 90px;
+    }
 
-    nav a {  
-      text-decoration: none;  
-      color: #000;  
-      font-weight: bold;  
-      font-size: 16px;  
-    }  
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-    .carousel {  
-      position: relative;  
-      width: 100%;  
-      overflow: hidden;  
-      background-color: #ffffff;  
-    }  
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-    .carousel-set {  
-      display: flex;  
-      justify-content: center;  
-      gap: 10px;  
-      opacity: 0;  
-      transition: opacity 1s ease-in-out;  
-      position: absolute;  
-      width: 100%;  
-    }  
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
 
-    .carousel-set.active {  
-      opacity: 1;  
-      position: relative;  
-    }  
+    .carousel-set {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
 
-    .carousel-set img {  
-      width: 100%;  
-      max-width: 32%;  
-      height: auto;  
-      object-fit: cover;  
-      background-color: white;  
-    }  
+    .carousel-set.active {
+      opacity: 1;
+      position: relative;
+    }
 
-    .carousel-text {  
-      text-align: center;  
-      color: #000;  
-      font-family: 'Playfair Display', serif;  
-      font-size: 1.4em;  
-      font-style: italic;  
-      font-weight: 500;  
-      margin-top: 20px;  
-    }  
+    .carousel-set img {
+      width: 100%;
+      max-width: 32%;
+      height: auto;
+      object-fit: cover;
+      background-color: white;
+    }
 
-    .btn-vermodelos {  
-      display: block;  
-      margin: 15px auto 40px;  
-      background: rgba(0,0,0,0.8);  
-      color: white;  
-      font-weight: bold;  
-      padding: 10px 25px;  
-      border-radius: 8px;  
-      text-decoration: none;  
-      font-size: 1em;  
-      text-align: center;  
-      max-width: 200px;  
-    }  
+    .carousel-text {
+      text-align: center;
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      font-weight: 500;
+      margin-top: 20px;
+    }
 
-    @media (max-width: 768px) {  
-      .carousel-set {  
-        flex-direction: row;  
-        flex-wrap: nowrap;  
-      }  
+    .btn-vermodelos {
+      display: block;
+      margin: 15px auto 40px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1em;
+      text-align: center;
+      max-width: 200px;
+    }
 
-      .carousel-set img {  
-        max-width: 32%;  
-        height: auto;  
-      }  
-    }  
-  </style>  
-</head>  
-<body>  
-  <header>  
-    <div class="logo-topo">  
-      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">  
-    </div>  
-    <nav>  
-      <a href="#">INÍCIO</a>  
-      <a href="#loja">CATÁLOGO</a>  
-      <a href="https://www.instagram.com/wicbolsas?igsh=cmt2M3hraXU5MDdm" target="_blank">INSTAGRAM</a>  
-      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank">CONTATO</a>  
-    </nav>  
-  </header>  
+    .contato {
+      background: #ffffff;
+      text-align: center;
+      padding: 50px 20px;
+      border-top: 1px solid #ccc;
+    }
 
-  <div class="carousel" id="carousel">  
-    <div class="carousel-set active">  
-      <img src="20241201_185249.jpg" alt="1">  
-      <img src="20250427_112536.jpg" alt="2">  
-      <img src="20250504_174618.jpg" alt="3">  
-    </div>  
-    <div class="carousel-set">  
-      <img src="20250518_131434.jpg" alt="4">  
-      <img src="20250619_152431.jpg" alt="5">  
-      <img src="20250619_153847.jpg" alt="6">  
-    </div>  
-    <div class="carousel-set">  
-      <img src="20250619_170843.jpg" alt="7">  
-      <img src="20250619_174411.jpg" alt="8">  
-      <img src="20250619_171810.jpg" alt="9">  
-    </div>  
-  </div>  
+    .contato h2 {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
 
-  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>  
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  
+    .contato-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      font-size: 1.1em;
+    }
 
-  <script>  
-    const sets = document.querySelectorAll('.carousel-set');  
-    let currentIndex = 0;  
-    let order = [0, 1, 2];  
+    .contato-info a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    function embaralharOrdemCentro() {  
-      let todas = [0, 1, 2];  
-      const ultimoCentro = order[1];  
-      todas = todas.filter(i => i !== ultimoCentro);  
-      const novoCentro = todas[Math.floor(Math.random() * todas.length)];  
-      const outras = [0, 1, 2].filter(i => i !== novoCentro);  
-      order = [outras[0], novoCentro, outras[1]];  
-    }  
+    .contato-info i {
+      font-size: 1.3em;
+      color: #000;
+    }
 
-    function trocarSet() {  
-      sets.forEach(set => set.classList.remove('active'));  
-      currentIndex = (currentIndex + 1) % sets.length;  
+    @media (max-width: 768px) {
+      .carousel-set {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
 
-      const imagens = sets[currentIndex].querySelectorAll('img');  
-      embaralharOrdemCentro();  
-      const novasImgs = order.map(i => imagens[i].src);  
+      .carousel-set img {
+        max-width: 32%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
 
-      imagens.forEach((img, idx) => {  
-        img.src = novasImgs[idx];  
-      });  
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
+    </div>
+    <nav>
+      <a href="#">INÍCIO</a>
+      <a href="#loja">CATÁLOGO</a>
+      <a href="https://www.instagram.com/wicbolsas?igsh=cmt2M3hraXU5MDdm" target="_blank">INSTAGRAM</a>
+      <a href="#contato">CONTATO</a>
+    </nav>
+  </header>
 
-      sets[currentIndex].classList.add('active');  
-    }  
+  <!-- Banner -->
+  <div class="carousel" id="carousel">
+    <div class="carousel-set active">
+      <img src="20241201_185249.jpg" alt="1">
+      <img src="20250427_112536.jpg" alt="2">
+      <img src="20250504_174618.jpg" alt="3">
+    </div>
+    <div class="carousel-set">
+      <img src="20250518_131434.jpg" alt="4">
+      <img src="20250619_152431.jpg" alt="5">
+      <img src="20250619_153847.jpg" alt="6">
+    </div>
+    <div class="carousel-set">
+      <img src="20250619_170843.jpg" alt="7">
+      <img src="20250619_174411.jpg" alt="8">
+      <img src="20250619_171810.jpg" alt="9">
+    </div>
+  </div>
 
-    setInterval(trocarSet, 6000);  
-  </script>  
-</body>  
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+
+  <!-- Seção Contato -->
+  <div id="contato" class="contato">
+    <h2>Entre em contato</h2>
+    <div class="contato-info">
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank">
+        <i class="fab fa-whatsapp"></i>(xx) xxxxx-xxxx
+      </a>
+      <a href="https://www.instagram.com/wicbolsas" target="_blank">
+        <i class="fab fa-instagram"></i>@wicbolsas
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const sets = document.querySelectorAll('.carousel-set');
+    let currentIndex = 0;
+    let order = [0, 1, 2];
+
+    function embaralharOrdemCentro() {
+      let todas = [0, 1, 2];
+      const ultimoCentro = order[1];
+      todas = todas.filter(i => i !== ultimoCentro);
+      const novoCentro = todas[Math.floor(Math.random() * todas.length)];
+      const outras = [0, 1, 2].filter(i => i !== novoCentro);
+      order = [outras[0], novoCentro, outras[1]];
+    }
+
+    function trocarSet() {
+      sets.forEach(set => set.classList.remove('active'));
+      currentIndex = (currentIndex + 1) % sets.length;
+
+      const imagens = sets[currentIndex].querySelectorAll('img');
+      embaralharOrdemCentro();
+      const novasImgs = order.map(i => imagens[i].src);
+
+      imagens.forEach((img, idx) => {
+        img.src = novasImgs[idx];
+      });
+
+      sets[currentIndex].classList.add('active');
+    }
+
+    setInterval(trocarSet, 6000);
+  </script>
+
+</body>
 </html>
