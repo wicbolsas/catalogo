@@ -1,113 +1,113 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #f7eae1;
-    }
+      background-color: #ffffff;
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    header {
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    .logo-topo img {
-      height: 90px;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    nav {
-      display: flex;
-      gap: 30px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
 
-    .carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      background-color: white;
-      padding: 20px 0;
-    }
+.carousel-set {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  width: 100%;
+}
 
-    .carousel-images {
-      display: flex;
-      gap: 10px;
-      transition: opacity 1.4s ease-in-out;
-      opacity: 1;
-    }
+.carousel-set.active {
+  opacity: 1;
+  position: relative;
+}
 
-    .carousel-images img {
-      width: 28vw;
-      max-width: 100%;
-      height: 85vh;
-      object-fit: contain;
-      border-radius: 10px;
-      background-color: white;
-    }
+.carousel-set img {
+  width: 100%;
+  max-width: 32%;
+  height: auto;
+  object-fit: cover;
+  background-color: white;
+}
 
-    .carousel.fade {
-      opacity: 0;
-    }
+.carousel-controls {
+  text-align: center;
+  margin-top: 20px;
+}
 
-    .carousel-text {
-      font-family: 'Lora', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      color: #000;
-      margin-top: 20px;
-      text-align: center;
-    }
+.carousel-text {
+  text-align: center;
+  color: #000;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 20px;
+}
 
-    .btn-vermodelos {
-      margin-top: 10px;
-      padding: 10px 25px;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      text-decoration: none;
-      cursor: pointer;
-    }
+.btn-vermodelos {
+  display: block;
+  margin: 15px auto 40px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  max-width: 200px;
+}
 
-    @media (max-width: 768px) {
-      .carousel-images {
-        flex-direction: column;
-        gap: 10px;
-      }
+@media (max-width: 768px) {
+  .carousel-set {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 
-      .carousel-images img {
-        width: 80vw;
-        height: auto;
-      }
+  .carousel-set img {
+    max-width: 32%;
+    height: auto;
+  }
+}
 
-      .carousel-text {
-        font-size: 1.1em;
-        margin-top: 10px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -121,63 +121,54 @@
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>
+  </header>  <div class="carousel" id="carousel">
+    <!-- Os conjuntos de imagens -->
+    <div class="carousel-set active">
+      <img src="20241201_185249.jpg" alt="1">
+      <img src="20250427_112536.jpg" alt="2">
+      <img src="20250504_174618.jpg" alt="3">
+    </div>
+    <div class="carousel-set">
+      <img src="20250518_131434.jpg" alt="4">
+      <img src="20250619_152431.jpg" alt="5">
+      <img src="20250619_153847.jpg" alt="6">
+    </div>
+    <div class="carousel-set">
+      <img src="20250619_170843.jpg" alt="7">
+      <img src="20250619_174411.jpg" alt="8">
+      <img src="20250619_171810.jpg" alt="9">
+    </div>
+  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
+    const sets = document.querySelectorAll('.carousel-set');
+    let currentIndex = 0;
+    let order = [0, 1, 2];
 
-  <div class="carousel" id="carousel">
-    <div class="carousel-images" id="carousel-images"></div>
-    <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
-    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
-  </div>
-
-  <script>
-    const imagens = [
-      "20241201_185249.jpg",
-      "20250427_112536.jpg",
-      "20250504_174618.jpg",
-      "20250518_131434.jpg",
-      "20250619_152431.jpg",
-      "20250619_153847.jpg",
-      "20250619_170843.jpg",
-      "20250619_174411.jpg",
-      "20250619_171810.jpg"
-    ];
-
-    let index = 0;
-    const carousel = document.getElementById('carousel');
-    const container = document.getElementById('carousel-images');
-
-    function shuffleMiddleImages(group) {
-      const [first, , third] = group;
-      const middleOptions = imagens.filter(img => ![first, third].includes(img));
-      const middle = middleOptions[Math.floor(Math.random() * middleOptions.length)];
-      return [first, middle, third];
+    function embaralharOrdemCentro() {
+      let todas = [0, 1, 2];
+      const ultimoCentro = order[1];
+      todas = todas.filter(i => i !== ultimoCentro);
+      const novoCentro = todas[Math.floor(Math.random() * todas.length)];
+      const outras = [0, 1, 2].filter(i => i !== novoCentro);
+      order = [outras[0], novoCentro, outras[1]];
     }
 
-    function showImages() {
-      carousel.classList.add('fade');
+    function trocarSet() {
+      sets.forEach(set => set.classList.remove('active'));
+      currentIndex = (currentIndex + 1) % sets.length;
 
-      setTimeout(() => {
-        let grupo = imagens.slice(index, index + 3);
-        if (grupo.length < 3) {
-          grupo = grupo.concat(imagens.slice(0, 3 - grupo.length));
-        }
+      // Reorganiza o trio antes de exibir
+      const imagens = sets[currentIndex].querySelectorAll('img');
+      embaralharOrdemCentro();
+      const novasImgs = order.map(i => imagens[i].src);
 
-        grupo = shuffleMiddleImages(grupo);
+      imagens.forEach((img, idx) => {
+        img.src = novasImgs[idx];
+      });
 
-        container.innerHTML = '';
-        grupo.forEach(src => {
-          const img = document.createElement('img');
-          img.src = src;
-          container.appendChild(img);
-        });
-
-        index = (index + 3) % imagens.length;
-        carousel.classList.remove('fade');
-      }, 400);
+      sets[currentIndex].classList.add('active');
     }
 
-    showImages();
-    setInterval(showImages, 7000);
-  </script>
-</body>
+    setInterval(trocarSet, 6000);
+  </script></body>
 </html>
