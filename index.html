@@ -1,13 +1,14 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WIC Bolsas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #f7eae1;
+      background-color: white;
     }header {
   background-color: white;
   text-align: center;
@@ -21,10 +22,10 @@
 
 nav {
   display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-top: 10px;
 }
 
 nav a {
@@ -36,89 +37,135 @@ nav a {
 
 .carousel {
   position: relative;
-  width: 100%;
   background-color: white;
   overflow: hidden;
-}
-
-.carousel-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
   padding: 20px 0;
 }
 
-.carousel-group.active {
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 1.5s ease;
   opacity: 1;
-  position: relative;
 }
 
-.carousel-group img {
-  width: 30vw;
+.carousel.fade {
+  opacity: 0;
+}
+
+.carousel img {
+  width: 30%;
   height: auto;
   object-fit: contain;
   background-color: white;
 }
 
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-controls button {
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.carousel-text {
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.btn-vermodelos {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
 @media (max-width: 700px) {
-  .carousel-group {
+  .carousel-container {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
+    overflow-x: scroll;
     gap: 10px;
+    padding: 0 10px;
   }
 
-  .carousel-group img {
-    width: 30vw;
+  .carousel img {
+    width: 80%;
     height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 }
 
   </style>
 </head>
-<body><header>
-  <div class="logo-topo">
-    <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
-  </div>
-  <nav>
-    <a href="#">INÍCIO</a>
-    <a href="#loja">LOJA</a>
-    <a href="#">INSTAGRAM</a>
-    <a href="#">CONTATO</a>
-  </nav>
-</header><div class="carousel" id="carousel">
-  <div class="carousel-group active">
-    <img src="20241201_185249.jpg" alt="Banner 1">
-    <img src="20250427_112536.jpg" alt="Banner 2">
-    <img src="20250504_174618.jpg" alt="Banner 3">
-  </div>
-  <div class="carousel-group">
-    <img src="20250518_131434.jpg" alt="Banner 4">
-    <img src="20250619_152431.jpg" alt="Banner 5">
-    <img src="20250619_153847.jpg" alt="Banner 6">
-  </div>
-  <div class="carousel-group">
-    <img src="20250619_170843.jpg" alt="Banner 7">
-    <img src="20250619_174411.jpg" alt="Banner 8">
-    <img src="20250619_171810.jpg" alt="Banner 9">
-  </div>
-</div><script>
-  let currentGroup = 0;
-  const groups = document.querySelectorAll('.carousel-group');
+<body>
+  <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC">
+    </div>
+    <nav>
+      <a href="#">INÍCIO</a>
+      <a href="#loja">LOJA</a>
+      <a href="#">INSTAGRAM</a>
+      <a href="#">CONTATO</a>
+    </nav>
+  </header>  <div class="carousel" id="carousel">
+    <div class="carousel-container" id="carousel-container">
+      <img src="20241201_185249.jpg" alt="Banner 1">
+      <img src="20250427_112536.jpg" alt="Banner 2">
+      <img src="20250504_174618.jpg" alt="Banner 3">
+    </div>
+    <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
+    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+  </div>  <script>
+    const imagens = [
+      ["20241201_185249.jpg", "20250427_112536.jpg", "20250504_174618.jpg"],
+      ["20250518_131434.jpg", "20250619_152431.jpg", "20250619_153847.jpg"],
+      ["20250619_170843.jpg", "20250619_174411.jpg", "20250619_171810.jpg"]
+    ];
 
-  function showNextGroup() {
-    groups[currentGroup].classList.remove('active');
-    currentGroup = (currentGroup + 1) % groups.length;
-    groups[currentGroup].classList.add('active');
-  }
+    let grupoAtual = 0;
+    const container = document.getElementById("carousel-container");
+    const carousel = document.getElementById("carousel");
 
-  setInterval(showNextGroup, 6000);
-</script></body>
+    function atualizarImagens() {
+      carousel.classList.add("fade");
+      setTimeout(() => {
+        container.innerHTML = '';
+        imagens[grupoAtual].forEach(src => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "Banner";
+          container.appendChild(img);
+        });
+        carousel.classList.remove("fade");
+      }, 500);
+    }
+
+    setInterval(() => {
+      grupoAtual = (grupoAtual + 1) % imagens.length;
+      atualizarImagens();
+    }, 6000);
+  </script></body>
 </html>
