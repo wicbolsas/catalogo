@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,105 +9,133 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-    }
-    header {
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+    }header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-    .logo-topo img {
-      height: 90px;
-    }
+.logo-topo img {
+  height: 90px;
+}
 
-    nav {
-      display: flex;
-      gap: 30px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+nav {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-    }
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    .carousel {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      background-color: #ffffff;
-    }
+.submenu {
+  display: none;
+  position: absolute;
+  top: 130px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
 
-    .carousel-set {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      position: absolute;
-      width: 100%;
-    }
+.submenu a {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #000;
+  transition: background 0.3s;
+}
 
-    .carousel-set.active {
-      opacity: 1;
-      position: relative;
-    }
+.submenu a:hover {
+  background-color: #f7eae1;
+}
 
-    .carousel-set img {
-      width: 100%;
-      max-width: 32%;
-      height: auto;
-      object-fit: cover;
-      background-color: white;
-    }
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
 
-    .carousel-controls {
-      text-align: center;
-      margin-top: 20px;
-    }
+.carousel-set {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  width: 100%;
+}
 
-    .carousel-text {
-      text-align: center;
-      color: #000;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4em;
-      font-style: italic;
-      font-weight: 500;
-      margin-top: 20px;
-    }
+.carousel-set.active {
+  opacity: 1;
+  position: relative;
+}
 
-    .btn-vermodelos {
-      display: block;
-      margin: 15px auto 40px;
-      background: rgba(0,0,0,0.8);
-      color: white;
-      font-weight: bold;
-      padding: 10px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1em;
-      text-align: center;
-      max-width: 200px;
-    }
+.carousel-set img {
+  width: 100%;
+  max-width: 32%;
+  height: auto;
+  object-fit: cover;
+  background-color: white;
+}
 
-    @media (max-width: 768px) {
-      .carousel-set {
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
+.carousel-text {
+  text-align: center;
+  color: #000;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 20px;
+}
 
-      .carousel-set img {
-        max-width: 32%;
-        height: auto;
-      }
-    }
+.btn-vermodelos {
+  display: block;
+  margin: 15px auto 40px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .carousel-set {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .carousel-set img {
+    max-width: 32%;
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -119,12 +146,23 @@
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
-      <a href="#">INSTAGRAM</a>
-      <a href="contato.html">CONTATO</a> <!-- ESTE É O LINK CORRETO -->
+      <a id="marcas-btn">MARCAS</a>
+      <a href="contato.html">CONTATO</a>
     </nav>
-  </header>
-
-  <div class="carousel" id="carousel">
+    <div class="submenu" id="submenu-marcas">
+      <a href="#">Bella Paulla</a>
+      <a href="#">Chalita</a>
+      <a href="#">Chicafiore</a>
+      <a href="#">Layton</a>
+      <a href="#">Miss Bella</a>
+      <a href="#">Missdong</a>
+      <a href="#">Pavão de Ouro</a>
+      <a href="#">Rosa Amora</a>
+      <a href="#">V.Voice</a>
+      <a href="#">Veryrio</a>
+      <a href="#">Todos</a>
+    </div>
+  </header>  <div class="carousel" id="carousel">
     <div class="carousel-set active">
       <img src="20241201_185249.jpg" alt="1">
       <img src="20250427_112536.jpg" alt="2">
@@ -140,12 +178,8 @@
       <img src="20250619_174411.jpg" alt="8">
       <img src="20250619_171810.jpg" alt="9">
     </div>
-  </div>
-
-  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
-
-  <script>
+  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
     const sets = document.querySelectorAll('.carousel-set');
     let currentIndex = 0;
     let order = [0, 1, 2];
@@ -175,6 +209,11 @@
     }
 
     setInterval(trocarSet, 6000);
-  </script>
-</body>
+
+    // Submenu toggle
+    document.getElementById('marcas-btn').addEventListener('click', () => {
+      const menu = document.getElementById('submenu-marcas');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script></body>
 </html>
