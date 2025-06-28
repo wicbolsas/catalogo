@@ -1,117 +1,113 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
-    }header {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+      background-color: #f7eae1;
+    }
 
-.logo-topo img {
-  height: 90px;
-}
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    .logo-topo img {
+      height: 90px;
+    }
 
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-}
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background-color: white;
-}
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.carousel-inner {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 1;
-  transition: opacity 1.2s ease-in-out;
-}
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background-color: white;
+      padding: 20px 0;
+    }
 
-.carousel-inner.fade-out {
-  opacity: 0;
-}
+    .carousel-images {
+      display: flex;
+      gap: 10px;
+      transition: opacity 1.4s ease-in-out;
+      opacity: 1;
+    }
 
-.carousel-inner img {
-  width: 33vw;
-  height: 85vh;
-  object-fit: cover;
-}
+    .carousel-images img {
+      width: 28vw;
+      max-width: 100%;
+      height: 85vh;
+      object-fit: contain;
+      border-radius: 10px;
+      background-color: white;
+    }
 
-.carousel-text {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4em;
-  font-style: italic;
-  color: #000;
-  margin-top: 20px;
-}
+    .carousel.fade {
+      opacity: 0;
+    }
 
-.btn-vermodelos {
-  display: block;
-  margin: 10px auto 40px;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  font-size: 1em;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-  text-align: center;
-  max-width: 180px;
-}
+    .carousel-text {
+      font-family: 'Lora', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      color: #000;
+      margin-top: 20px;
+      text-align: center;
+    }
 
-.btn-vermodelos:hover {
-  background-color: #333;
-}
+    .btn-vermodelos {
+      margin-top: 10px;
+      padding: 10px 25px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-@media (max-width: 768px) {
-  .carousel-inner {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+    @media (max-width: 768px) {
+      .carousel-images {
+        flex-direction: column;
+        gap: 10px;
+      }
 
-  .carousel-inner img {
-    width: 100vw;
-    height: 80vh;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
+      .carousel-images img {
+        width: 80vw;
+        height: auto;
+      }
 
-  .carousel-text {
-    font-size: 1.1em;
-  }
-}
-
+      .carousel-text {
+        font-size: 1.1em;
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -125,32 +121,63 @@ nav a {
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>  <div class="carousel">
-    <div class="carousel-inner" id="carousel-inner">
-      <img src="20241201_185249.jpg" alt="Banner 1">
-      <img src="20250427_112536.jpg" alt="Banner 2">
-      <img src="20250504_174618.jpg" alt="Banner 3">
-    </div>
-  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
-    const grupos = [
-      ["20241201_185249.jpg", "20250427_112536.jpg", "20250504_174618.jpg"],
-      ["20250518_131434.jpg", "20250619_152431.jpg", "20250619_153847.jpg"],
-      ["20250619_170843.jpg", "20250619_174411.jpg", "20250619_171810.jpg"]
+  </header>
+
+  <div class="carousel" id="carousel">
+    <div class="carousel-images" id="carousel-images"></div>
+    <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
+    <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+  </div>
+
+  <script>
+    const imagens = [
+      "20241201_185249.jpg",
+      "20250427_112536.jpg",
+      "20250504_174618.jpg",
+      "20250518_131434.jpg",
+      "20250619_152431.jpg",
+      "20250619_153847.jpg",
+      "20250619_170843.jpg",
+      "20250619_174411.jpg",
+      "20250619_171810.jpg"
     ];
 
-    let indiceGrupo = 0;
-    const container = document.getElementById("carousel-inner");
+    let index = 0;
+    const carousel = document.getElementById('carousel');
+    const container = document.getElementById('carousel-images');
 
-    function trocarGrupo() {
-      container.classList.add("fade-out");
-      setTimeout(() => {
-        container.innerHTML = grupos[indiceGrupo].map(src => `<img src="${src}" alt="Banner">`).join("");
-        container.classList.remove("fade-out");
-        indiceGrupo = (indiceGrupo + 1) % grupos.length;
-      }, 800);
+    function shuffleMiddleImages(group) {
+      const [first, , third] = group;
+      const middleOptions = imagens.filter(img => ![first, third].includes(img));
+      const middle = middleOptions[Math.floor(Math.random() * middleOptions.length)];
+      return [first, middle, third];
     }
 
-    setInterval(trocarGrupo, 6000);
-  </script></body>
+    function showImages() {
+      carousel.classList.add('fade');
+
+      setTimeout(() => {
+        let grupo = imagens.slice(index, index + 3);
+        if (grupo.length < 3) {
+          grupo = grupo.concat(imagens.slice(0, 3 - grupo.length));
+        }
+
+        grupo = shuffleMiddleImages(grupo);
+
+        container.innerHTML = '';
+        grupo.forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          container.appendChild(img);
+        });
+
+        index = (index + 3) % imagens.length;
+        carousel.classList.remove('fade');
+      }, 400);
+    }
+
+    showImages();
+    setInterval(showImages, 7000);
+  </script>
+</body>
 </html>
