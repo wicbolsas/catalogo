@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,105 +10,105 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-    }header {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    }
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-.logo-topo img {
-  height: 90px;
-}
+    .logo-topo img {
+      height: 90px;
+    }
 
-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-}
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background-color: #ffffff;
-}
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
 
-.carousel-set {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  position: absolute;
-  width: 100%;
-}
+    .carousel-set {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
 
-.carousel-set.active {
-  opacity: 1;
-  position: relative;
-}
+    .carousel-set.active {
+      opacity: 1;
+      position: relative;
+    }
 
-.carousel-set img {
-  width: 100%;
-  max-width: 32%;
-  height: auto;
-  object-fit: cover;
-  background-color: white;
-}
+    .carousel-set img {
+      width: 100%;
+      max-width: 32%;
+      height: auto;
+      object-fit: cover;
+      background-color: white;
+    }
 
-.carousel-controls {
-  text-align: center;
-  margin-top: 20px;
-}
+    .carousel-controls {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-.carousel-text {
-  text-align: center;
-  color: #000;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4em;
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 20px;
-}
+    .carousel-text {
+      text-align: center;
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      font-weight: 500;
+      margin-top: 20px;
+    }
 
-.btn-vermodelos {
-  display: block;
-  margin: 15px auto 40px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  font-weight: bold;
-  padding: 10px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1em;
-  text-align: center;
-  max-width: 200px;
-}
+    .btn-vermodelos {
+      display: block;
+      margin: 15px auto 40px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1em;
+      text-align: center;
+      max-width: 200px;
+    }
 
-@media (max-width: 768px) {
-  .carousel-set {
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
+    @media (max-width: 768px) {
+      .carousel-set {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
 
-  .carousel-set img {
-    max-width: 32%;
-    height: auto;
-  }
-}
-
+      .carousel-set img {
+        max-width: 32%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -119,10 +120,11 @@ nav a {
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
       <a href="#">INSTAGRAM</a>
-      <a href="#">CONTATO</a>
+      <a href="contato.html">CONTATO</a> <!-- ESTE É O LINK CORRETO -->
     </nav>
-  </header>  <div class="carousel" id="carousel">
-    <!-- Os conjuntos de imagens -->
+  </header>
+
+  <div class="carousel" id="carousel">
     <div class="carousel-set active">
       <img src="20241201_185249.jpg" alt="1">
       <img src="20250427_112536.jpg" alt="2">
@@ -138,8 +140,12 @@ nav a {
       <img src="20250619_174411.jpg" alt="8">
       <img src="20250619_171810.jpg" alt="9">
     </div>
-  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
-  <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
+  </div>
+
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+
+  <script>
     const sets = document.querySelectorAll('.carousel-set');
     let currentIndex = 0;
     let order = [0, 1, 2];
@@ -157,7 +163,6 @@ nav a {
       sets.forEach(set => set.classList.remove('active'));
       currentIndex = (currentIndex + 1) % sets.length;
 
-      // Reorganiza o trio antes de exibir
       const imagens = sets[currentIndex].querySelectorAll('img');
       embaralharOrdemCentro();
       const novasImgs = order.map(i => imagens[i].src);
@@ -170,5 +175,6 @@ nav a {
     }
 
     setInterval(trocarSet, 6000);
-  </script></body>
+  </script>
+</body>
 </html>
