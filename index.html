@@ -3,12 +3,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WIC Bolsas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #f7eae1;
+      background-color: #ffffff;
     }header {
   background-color: white;
   display: flex;
@@ -38,71 +38,74 @@ nav a {
 }
 
 .carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+
+.fade-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  background-color: white;
-  padding: 20px 0;
-}
-
-.carousel-images {
-  display: flex;
   gap: 10px;
-  transition: opacity 1.4s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
   opacity: 1;
 }
 
-.carousel-images img {
-  width: 28vw;
-  max-width: 100%;
-  height: 85vh;
-  object-fit: contain;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.carousel.fade {
+.fade-container.fade-out {
   opacity: 0;
 }
 
+.fade-container img {
+  width: 30vw;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
 .carousel-text {
-  font-family: 'Lora', serif;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
   font-size: 1.4em;
   font-style: italic;
+  font-weight: 500;
+  margin: 20px auto 10px;
   color: #000;
-  margin-top: 20px;
-  text-align: center;
 }
 
 .btn-vermodelos {
-  margin-top: 10px;
-  padding: 10px 25px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  display: block;
+  margin: 0 auto 40px;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
   font-size: 1em;
+  padding: 10px 25px;
+  border-radius: 8px;
   text-decoration: none;
-  cursor: pointer;
+  text-align: center;
+  max-width: 180px;
 }
 
 @media (max-width: 768px) {
-  .carousel-images {
-    flex-direction: column;
+  .fade-container {
+    flex-direction: row;
+    overflow-x: auto;
     gap: 10px;
+    padding: 10px;
   }
 
-  .carousel-images img {
+  .fade-container img {
     width: 80vw;
     height: auto;
   }
 
   .carousel-text {
     font-size: 1.1em;
-    margin-top: 10px;
   }
 }
 
@@ -119,12 +122,14 @@ nav a {
       <a href="#">INSTAGRAM</a>
       <a href="#">CONTATO</a>
     </nav>
-  </header>  <div class="carousel" id="carousel">
-    <div class="carousel-images" id="carousel-images"></div>
+  </header>  <div class="carousel">
+    <div class="fade-container" id="fade-container">
+      <!-- Imagens vão ser injetadas via JavaScript -->
+    </div>
     <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com WIC.</div>
     <a class="btn-vermodelos" href="#loja">Ver modelos</a>
   </div>  <script>
-    const imagens = [
+    const todasImagens = [
       "20241201_185249.jpg",
       "20250427_112536.jpg",
       "20250504_174618.jpg",
@@ -136,41 +141,37 @@ nav a {
       "20250619_171810.jpg"
     ];
 
-    let index = 0;
-    const carousel = document.getElementById('carousel');
-    const container = document.getElementById('carousel-images');
+    let meioIndex = 0;
+    const fadeContainer = document.getElementById('fade-container');
 
-    function shuffleMiddleImages(group) {
-      const [first, , third] = group;
-      const middleOptions = imagens.filter(img => ![first, third].includes(img));
-      const middle = middleOptions[Math.floor(Math.random() * middleOptions.length)];
-      return [first, middle, third];
+    function gerarTrio() {
+      const esquerda = todasImagens[(meioIndex + todasImagens.length - 1) % todasImagens.length];
+      const meio = todasImagens[meioIndex];
+      const direita = todasImagens[(meioIndex + 1) % todasImagens.length];
+      return [esquerda, meio, direita];
     }
 
-    function showImages() {
-      carousel.classList.add('fade');
-
+    function renderizarTrio(trio) {
+      fadeContainer.classList.add('fade-out');
       setTimeout(() => {
-        let grupo = imagens.slice(index, index + 3);
-        if (grupo.length < 3) {
-          grupo = grupo.concat(imagens.slice(0, 3 - grupo.length));
-        }
-
-        grupo = shuffleMiddleImages(grupo);
-
-        container.innerHTML = '';
-        grupo.forEach(src => {
+        fadeContainer.innerHTML = '';
+        trio.forEach(src => {
           const img = document.createElement('img');
           img.src = src;
-          container.appendChild(img);
+          fadeContainer.appendChild(img);
         });
-
-        index = (index + 3) % imagens.length;
-        carousel.classList.remove('fade');
-      }, 400);
+        fadeContainer.classList.remove('fade-out');
+      }, 800);
     }
 
-    showImages();
-    setInterval(showImages, 7000);
+    function avancar() {
+      meioIndex = (meioIndex + 1) % todasImagens.length;
+      const trio = gerarTrio();
+      renderizarTrio(trio);
+    }
+
+    // Inicializar
+    renderizarTrio(gerarTrio());
+    setInterval(avancar, 6000);
   </script></body>
 </html>
