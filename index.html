@@ -9,133 +9,110 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-    }header {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.logo-topo img {
-  height: 90px;
-}
-
-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.submenu {
-  display: none;
-  position: absolute;
-  top: 130px;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.submenu a {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 14px;
-  text-decoration: none;
-  color: #000;
-  transition: background 0.3s;
-}
-
-.submenu a:hover {
-  background-color: #f7eae1;
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.carousel-set {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  position: absolute;
-  width: 100%;
-}
-
-.carousel-set.active {
-  opacity: 1;
-  position: relative;
-}
-
-.carousel-set img {
-  width: 100%;
-  max-width: 32%;
-  height: auto;
-  object-fit: cover;
-  background-color: white;
-}
-
-.carousel-text {
-  text-align: center;
-  color: #000;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4em;
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 20px;
-}
-
-.btn-vermodelos {
-  display: block;
-  margin: 15px auto 40px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  font-weight: bold;
-  padding: 10px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1em;
-  text-align: center;
-  max-width: 200px;
-}
-
-@media (max-width: 768px) {
-  .carousel-set {
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-  .carousel-set img {
-    max-width: 32%;
-    height: auto;
-  }
-}
-
+    }
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .logo-topo img {
+      height: 90px;
+    }
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .menu-marcas {
+      display: none;
+      position: absolute;
+      background-color: white;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    .menu-marcas a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .carousel-set {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
+    .carousel-set.active {
+      opacity: 1;
+      position: relative;
+    }
+    .carousel-set img {
+      width: 100%;
+      max-width: 32%;
+      height: auto;
+      object-fit: cover;
+      background-color: white;
+    }
+    .carousel-text {
+      text-align: center;
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+    .btn-vermodelos {
+      display: block;
+      margin: 15px auto 40px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1em;
+      text-align: center;
+      max-width: 200px;
+    }
+    @media (max-width: 768px) {
+      .carousel-set {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+      .carousel-set img {
+        max-width: 32%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -146,10 +123,10 @@ nav a {
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
-      <a id="marcas-btn">MARCAS</a>
+      <a id="marcas-link">MARCAS</a>
       <a href="contato.html">CONTATO</a>
     </nav>
-    <div class="submenu" id="submenu-marcas">
+    <div class="menu-marcas" id="menu-marcas">
       <a href="#">Bella Paulla</a>
       <a href="#">Chalita</a>
       <a href="#">Chicafiore</a>
@@ -178,7 +155,8 @@ nav a {
       <img src="20250619_174411.jpg" alt="8">
       <img src="20250619_171810.jpg" alt="9">
     </div>
-  </div>  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  </div>
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
   <a class="btn-vermodelos" href="#loja">Ver modelos</a>  <script>
     const sets = document.querySelectorAll('.carousel-set');
     let currentIndex = 0;
@@ -196,24 +174,26 @@ nav a {
     function trocarSet() {
       sets.forEach(set => set.classList.remove('active'));
       currentIndex = (currentIndex + 1) % sets.length;
-
       const imagens = sets[currentIndex].querySelectorAll('img');
       embaralharOrdemCentro();
       const novasImgs = order.map(i => imagens[i].src);
-
       imagens.forEach((img, idx) => {
         img.src = novasImgs[idx];
       });
-
       sets[currentIndex].classList.add('active');
     }
 
     setInterval(trocarSet, 6000);
 
-    // Submenu toggle
-    document.getElementById('marcas-btn').addEventListener('click', () => {
-      const menu = document.getElementById('submenu-marcas');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    const marcasLink = document.getElementById('marcas-link');
+    const menuMarcas = document.getElementById('menu-marcas');
+    marcasLink.addEventListener('click', () => {
+      menuMarcas.style.display = menuMarcas.style.display === 'flex' ? 'none' : 'flex';
+    });
+    document.addEventListener('click', function(e) {
+      if (!menuMarcas.contains(e.target) && e.target !== marcasLink) {
+        menuMarcas.style.display = 'none';
+      }
     });
   </script></body>
 </html>
