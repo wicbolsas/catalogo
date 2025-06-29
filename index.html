@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,62 +10,138 @@
       margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-    }header {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    }
 
-.logo-topo img {
-  height: 90px;
-}
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      position: relative;
+    }
 
-nav {
-  display: flex;
-  gap: 30px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-}
+    .logo-topo img {
+      height: 90px;
+    }
 
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 2;
+    }
 
-.menu-marcas {
-  display: none;
-  position: absolute;
-  top: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 12px;
-  padding: 20px 30px;
-  margin-top: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  flex-direction: column;
-  align-items: flex-start;
-}
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+    }
 
-.menu-marcas a {
-  color: #000;
-  font-size: 18px;
-  margin: 10px 0;
-  text-decoration: none;
-  font-family: 'Playfair Display', serif;
-}
+    .menu-marcas {
+      position: absolute;
+      top: 120px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(6px);
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 10;
+    }
 
-.show {
-  display: flex;
-}
+    .menu-marcas a {
+      color: #000;
+      font-size: 18px;
+      text-decoration: none;
+      text-align: left;
+      transition: 0.3s;
+    }
 
+    .menu-marcas a:hover {
+      text-decoration: underline;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+      z-index: 1;
+    }
+
+    .carousel-set {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
+
+    .carousel-set.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .carousel-set img {
+      width: 100%;
+      max-width: 32%;
+      height: auto;
+      object-fit: cover;
+      background-color: white;
+    }
+
+    .carousel-text {
+      text-align: center;
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    .btn-vermodelos {
+      display: block;
+      margin: 15px auto 40px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1em;
+      text-align: center;
+      max-width: 200px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-set {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .carousel-set img {
+        max-width: 32%;
+        height: auto;
+      }
+
+      .menu-marcas {
+        top: 180px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   </style>
 </head>
 <body>
@@ -75,27 +152,92 @@ nav a {
     <nav>
       <a href="#">INÍCIO</a>
       <a href="#loja">LOJA</a>
-      <a href="#" onclick="toggleMarcas(event)">MARCAS</a>
-      <a href="contato.html">CONTATO</a><div class="menu-marcas" id="menu-marcas">
-    <a href="#">Bella Paulla</a>
-    <a href="#">Chalita</a>
-    <a href="#">Chicafiore</a>
-    <a href="#">Layton</a>
-    <a href="#">Miss Bella</a>
-    <a href="#">Missdong</a>
-    <a href="#">Pavão de Ouro</a>
-    <a href="#">Rosa Amora</a>
-    <a href="#">V.Voice</a>
-    <a href="#">Veryrio</a>
-    <a href="#">Todos</a>
-  </div>
-</nav>
+      <a href="#" id="marcasBtn">MARCAS</a>
+      <a href="contato.html">CONTATO</a>
+    </nav>
+    <div class="menu-marcas" id="menuMarcas">
+      <a href="#">Bella Paulla</a>
+      <a href="#">Chalita</a>
+      <a href="#">Chicafiore</a>
+      <a href="#">Layton</a>
+      <a href="#">Miss Bella</a>
+      <a href="#">Missdong</a>
+      <a href="#">Pavão de Ouro</a>
+      <a href="#">Rosa Amora</a>
+      <a href="#">V.Voice</a>
+      <a href="#">Veryrio</a>
+      <a href="#">Todos</a>
+    </div>
+  </header>
 
-  </header>  <script>
-    function toggleMarcas(e) {
-      e.preventDefault();
-      const menu = document.getElementById('menu-marcas');
-      menu.classList.toggle('show');
+  <div class="carousel" id="carousel">
+    <div class="carousel-set active">
+      <img src="20241201_185249.jpg" alt="1">
+      <img src="20250427_112536.jpg" alt="2">
+      <img src="20250504_174618.jpg" alt="3">
+    </div>
+    <div class="carousel-set">
+      <img src="20250518_131434.jpg" alt="4">
+      <img src="20250619_152431.jpg" alt="5">
+      <img src="20250619_153847.jpg" alt="6">
+    </div>
+    <div class="carousel-set">
+      <img src="20250619_170843.jpg" alt="7">
+      <img src="20250619_174411.jpg" alt="8">
+      <img src="20250619_171810.jpg" alt="9">
+    </div>
+  </div>
+
+  <div class="carousel-text">Seu estilo, sua identidade. Todos os dias com a WIC.</div>
+  <a class="btn-vermodelos" href="#loja">Ver modelos</a>
+
+  <script>
+    // Banner
+    const sets = document.querySelectorAll('.carousel-set');
+    let currentIndex = 0;
+    let order = [0, 1, 2];
+
+    function embaralharOrdemCentro() {
+      let todas = [0, 1, 2];
+      const ultimoCentro = order[1];
+      todas = todas.filter(i => i !== ultimoCentro);
+      const novoCentro = todas[Math.floor(Math.random() * todas.length)];
+      const outras = [0, 1, 2].filter(i => i !== novoCentro);
+      order = [outras[0], novoCentro, outras[1]];
     }
-  </script></body>
+
+    function trocarSet() {
+      sets.forEach(set => set.classList.remove('active'));
+      currentIndex = (currentIndex + 1) % sets.length;
+
+      const imagens = sets[currentIndex].querySelectorAll('img');
+      embaralharOrdemCentro();
+      const novasImgs = order.map(i => imagens[i].src);
+
+      imagens.forEach((img, idx) => {
+        img.src = novasImgs[idx];
+      });
+
+      sets[currentIndex].classList.add('active');
+    }
+
+    setInterval(trocarSet, 6000);
+
+    // Marcas menu toggle
+    const marcasBtn = document.getElementById('marcasBtn');
+    const menuMarcas = document.getElementById('menuMarcas');
+
+    marcasBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      menuMarcas.style.display = menuMarcas.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Fecha o menu se clicar fora
+    document.addEventListener('click', function (e) {
+      if (!marcasBtn.contains(e.target) && !menuMarcas.contains(e.target)) {
+        menuMarcas.style.display = 'none';
+      }
+    });
+  </script>
+</body>
 </html>
