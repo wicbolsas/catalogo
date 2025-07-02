@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bella Paulla - WIC Bolsas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffffff;
+    }
+
+    header {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-topo img {
+      height: 90px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .produto {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .produto img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .info {
+      max-width: 500px;
+    }
+
+    .info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .info p {
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+
+    .cores {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .cor {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+
+    .estoque {
+      font-size: 0.9em;
+      color: #777;
+      display: none; /* oculto para cliente */
+    }
+
+    .btn-comprar {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .produto {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-topo">
+      <img src="BackgroundEraser_20240602_202612151.png" alt="Logo WIC" />
+    </div>
+    <nav>
+      <a href="index.html">INÍCIO</a>
+      <a href="#loja">LOJA</a>
+      <a href="#marcas">MARCAS</a>
+      <a href="contato.html">CONTATO</a>
+    </nav>
+  </header>
+
+  <section class="produto">
+    <img src="20250619_170843.jpg" alt="Bolsa Mallina - Bella Paulla" />
+    <div class="info">
+      <h2>Bolsa Mallina - Bella Paulla</h2>
+      <p>Autêntica, charmosa e funcional. A Bolsa Mallina é aquele modelo que une o toque clássico da Bella Paulla com um design contemporâneo que combina com qualquer ocasião.</p>
+
+      <div class="cores">
+        <div class="cor" style="background-color: black;" title="Preta"></div>
+        <div class="cor" style="background-color: brown;" title="Marrom"></div>
+        <div class="cor" style="background-color: white;" title="Branco"></div>
+        <!-- Adicione ou remova bolinhas de cor conforme o estoque -->
+      </div>
+
+      <div class="estoque">
+        Estoque: 5 unidades (visualização interna)
+      </div>
+
+      <a class="btn-comprar" href="#">Comprar</a>
+    </div>
+  </section>
+</body>
+</html>
